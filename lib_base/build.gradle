@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        // DataBinding 开启
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // kotlin Jvm 版本
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    //避免编译不能用于在编译类路径中发现的注解处理器，因为它们中的任何更改都需要运行注解处理任务
+    kapt.includeCompileClasspath = false
+}
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+
+    api rootProject.ext.support["support-v4"]
+
+    api rootProject.ext.androidx["androidx_appcompat"]
+    api rootProject.ext.androidx["androidx_recyclerview"]
+    api rootProject.ext.androidx["junit"]
+    api rootProject.ext.androidx["test_ext_junit"]
+    api rootProject.ext.androidx["legacy"]
+    api rootProject.ext.androidx["constraint"]
+    api rootProject.ext.androidx["multidex"]
+    api rootProject.ext.androidx["core_ktx"]
+    api rootProject.ext.androidx["activity_ktx"]
+    api rootProject.ext.androidx["fragment_ktx"]
+    api rootProject.ext.androidx["lifecycle_extensions"]
+    api rootProject.ext.androidx["lifecycle_ktx"]
+    api rootProject.ext.androidx["lifecycle_viewmodel_ktx"]
+    api rootProject.ext.androidx["lifecycle_livedata_ktx"]
+    api rootProject.ext.androidx["test_runner"]
+    api rootProject.ext.androidx["test_espresso_core"]
+    api rootProject.ext.androidx["material"]
+
+    api rootProject.ext.dependencies["kotlin_stdlib"]
+    api rootProject.ext.dependencies["kotlin_coroutines"]
+    api rootProject.ext.dependencies["kotlin_serialization"]
+
+    api rootProject.ext.dependencies["gson"]
+
+
+    api rootProject.ext.dependencies["koin_scope"]
+    api rootProject.ext.dependencies["koin_viewmodel"]
+    api rootProject.ext.dependencies["koin_ext"]
+
+
+    api rootProject.ext.dependencies["immersion_bar"]
+    api rootProject.ext.dependencies["immersion_bar_ktx"]
+    api rootProject.ext.dependencies["arouter_api"]
+    api rootProject.ext.dependencies["arouter_compiler"]
+}
