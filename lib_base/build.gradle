@@ -16,6 +16,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildFeatures {
@@ -24,6 +30,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -49,12 +59,14 @@ kapt {
 
 dependencies {
 
+    api fileTree(dir: "libs", include: ["*.jar"])
+
     api rootProject.ext.support["support-v4"]
 
     api rootProject.ext.androidx["androidx_appcompat"]
     api rootProject.ext.androidx["androidx_recyclerview"]
-    api rootProject.ext.androidx["junit"]
-    api rootProject.ext.androidx["test_ext_junit"]
+    testImplementation rootProject.ext.androidx["junit"]
+    androidTestImplementation rootProject.ext.androidx["test_ext_junit"]
     api rootProject.ext.androidx["legacy"]
     api rootProject.ext.androidx["constraint"]
     api rootProject.ext.androidx["multidex"]
@@ -65,8 +77,8 @@ dependencies {
     api rootProject.ext.androidx["lifecycle_ktx"]
     api rootProject.ext.androidx["lifecycle_viewmodel_ktx"]
     api rootProject.ext.androidx["lifecycle_livedata_ktx"]
-    api rootProject.ext.androidx["test_runner"]
-    api rootProject.ext.androidx["test_espresso_core"]
+    androidTestImplementation rootProject.ext.androidx["test_runner"]
+    androidTestImplementation rootProject.ext.androidx["test_espresso_core"]
     api rootProject.ext.androidx["material"]
 
     api rootProject.ext.dependencies["kotlin_stdlib"]
@@ -83,6 +95,7 @@ dependencies {
 
     api rootProject.ext.dependencies["immersion_bar"]
     api rootProject.ext.dependencies["immersion_bar_ktx"]
+
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_compiler"]
 }

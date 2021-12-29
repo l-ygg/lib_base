@@ -3,6 +3,7 @@ package com.ygg.project_base.viewmodel
 import androidx.databinding.ObservableField
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.model.UiStartActModel
+import com.ygg.lib_base.rotue.RouteCenter
 import com.ygg.project_base.AppConfig
 
 /**
@@ -25,6 +26,6 @@ class LoginViewModel : BaseViewModel() {
 
     /** 指纹登录点击 */
     val onLoginClick: () -> Unit = {
-        uiStartActivity.value = UiStartActModel(AppConfig.Router.Main.A_MAIN)
+        uiStartActivity.value = UiStartActModel("/main/TestActivity")
     }
 }

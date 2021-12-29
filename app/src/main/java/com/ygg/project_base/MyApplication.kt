@@ -1,6 +1,9 @@
 package com.ygg.project_base
 
+import android.util.Log
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ygg.lib_base.base.BaseApplication
+import com.ygg.lib_base.log.InternalLog
 import com.ygg.project_base.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -24,6 +27,7 @@ class MyApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
 
         startKoin {
             androidLogger()

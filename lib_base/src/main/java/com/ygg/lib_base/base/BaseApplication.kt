@@ -1,8 +1,10 @@
 package com.ygg.lib_base.base
 
 import android.app.Application
+import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ygg.lib_base.BuildConfig
+import com.ygg.lib_base.log.InternalLog
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -27,10 +29,12 @@ abstract class BaseApplication : Application() {
         super.onCreate()
 
         // 初始化 ARouter
+        // Debug 模式或非线上模式
         if (BuildConfig.DEBUG) {
-            // Debug 模式或非线上模式
+            Log.e("TAG", "开启日志打印")
             ARouter.openLog()
             ARouter.openDebug()
+            ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
         }
         ARouter.init(this)
     }

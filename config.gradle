@@ -38,7 +38,7 @@ ext {
             "koin_version"                : "2.2.3",
 
             "immersion_bar_version"       : "3.0.0",
-            "arouter_version"             : "1.5.1",
+            "arouter_version"             : "1.5.2",
     ]
 
     //androidx配置
@@ -118,7 +118,9 @@ ext {
             * ARouter 路由
             * - Github: [https://github.com/alibaba/ARouter]
             */
-            'arouter_api'         : "com.alibaba:arouter-api:${versions["arouter_version"]}",
-            'arouter_compiler'    : "com.alibaba:arouter-compiler:${versions["arouter_version"]}",
+//            'arouter_api'         : "com.alibaba:arouter-api:${versions["arouter_version"]}",
+            'arouter_api'         : "com.alibaba:arouter-api:1.5.2",
+//            'arouter_compiler'    : "com.alibaba:arouter-compiler:${versions["arouter_version"]}",
+            'arouter_compiler'    : "com.alibaba:arouter-compiler:1.5.2",
     ]
 }
