@@ -29,6 +29,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
         setContentView(R.layout.activity_login)
 
         viewModel.userName.set(TAG)
+
     }
 
 }

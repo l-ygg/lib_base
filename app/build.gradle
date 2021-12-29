@@ -63,6 +63,8 @@ kapt {
 
 dependencies {
 
-    implementation project(path: ':lib_base')
+//    implementation project(path: ':lib_base')
+
+    implementation 'com.github.l-ygg:lib_base:1.0.0-alpha'
 
 }
