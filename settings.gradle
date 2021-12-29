@@ -1,3 +1,6 @@
 rootProject.name = "project_base"
 include ':app'
 include ':lib_base'
+include ':module_login'
+include ':lib_resources'
+include ':lib_common'

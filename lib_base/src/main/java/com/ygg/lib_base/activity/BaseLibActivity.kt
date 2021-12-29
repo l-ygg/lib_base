@@ -3,6 +3,7 @@ package com.ygg.lib_base.activity
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import com.ygg.lib_base.R
 import com.ygg.lib_base.ext.hideSoftKeyboard
 import com.ygg.lib_base.ext.shouldHideInput
 
@@ -31,6 +32,7 @@ abstract class BaseLibActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // 保存当前 Context 对象
         mContext = this
+
     }
 
     override fun onPause() {

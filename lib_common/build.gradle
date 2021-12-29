@@ -1,0 +1,13 @@
+apply from: "../module.build.gradle"
+
+android {
+    defaultConfig {
+    }
+}
+
+dependencies {
+    //组件依赖基础库
+    api project(':lib_base')
+    //组件依赖资源库
+    api project(':lib_resources')
+}

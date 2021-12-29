@@ -1,10 +1,12 @@
 package com.ygg.project_base
 
+import android.annotation.SuppressLint
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ygg.lib_base.base.BaseApplication
 import com.ygg.lib_base.log.InternalLog
-import com.ygg.project_base.di.viewModelModule
+import com.ygg.module_login.di.loginViewModelModule
+import com.ygg.project_base.di.baseViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -25,14 +27,15 @@ import org.koin.core.logger.Level
  */
 class MyApplication : BaseApplication() {
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate() {
         super.onCreate()
 
-
         startKoin {
+            Log.e("TAG","初始化")
             androidLogger()
             androidContext(this@MyApplication)
-            modules(viewModelModule)
+            modules(listOf(loginViewModelModule, baseViewModelModule))
         }
     }
 

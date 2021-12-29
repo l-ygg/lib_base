@@ -1,6 +1,6 @@
-package com.ygg.project_base.di
+package com.ygg.module_login.di
 
-import com.ygg.lib_base.viewmodel.BlankViewModel
+import com.ygg.module_login.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -20,6 +20,6 @@ import org.koin.dsl.module
  */
 
 /** ViewModel Module */
-val baseViewModelModule: Module = module {
-    viewModel { BlankViewModel() }
+val loginViewModelModule: Module = module {
+    viewModel { LoginViewModel() }
 }

@@ -1,12 +1,10 @@
-package com.ygg.project_base.ui
+package com.ygg.module_login
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ygg.lib_base.base.BaseActivity
 import com.ygg.lib_base.viewmodel.BlankViewModel
-import com.ygg.project_base.AppConfig
-import com.ygg.project_base.R
-import com.ygg.project_base.databinding.ActivityTestBinding
+import com.ygg.module_login.databinding.LoginActivityTestBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -23,13 +21,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 修改日期
  */
 @Route(path = "/main/TestActivity")
-class TestActivity : BaseActivity<BlankViewModel, ActivityTestBinding>() {
+class TestActivity : BaseActivity<BlankViewModel, LoginActivityTestBinding>() {
 
     override val viewModel: BlankViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.login_activity_test)
     }
 
 }

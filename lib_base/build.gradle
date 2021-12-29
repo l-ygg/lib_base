@@ -101,4 +101,5 @@ dependencies {
 
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_compiler"]
+
 }

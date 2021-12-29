@@ -1,10 +1,8 @@
-package com.ygg.project_base.viewmodel
+package com.ygg.module_login
 
 import androidx.databinding.ObservableField
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.model.UiStartActModel
-import com.ygg.lib_base.rotue.RouteCenter
-import com.ygg.project_base.AppConfig
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司

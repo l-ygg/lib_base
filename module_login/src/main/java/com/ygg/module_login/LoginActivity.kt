@@ -1,10 +1,9 @@
-package com.ygg.project_base.ui
+package com.ygg.module_login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.ygg.lib_base.base.BaseActivity
-import com.ygg.project_base.R
-import com.ygg.project_base.databinding.ActivityLoginBinding
-import com.ygg.project_base.viewmodel.LoginViewModel
+import com.ygg.module_login.databinding.LoginActivityLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -20,13 +19,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 修改描述：
  * 修改日期
  */
-class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
+class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() {
 
     override val viewModel: LoginViewModel by viewModel()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.login_activity_login)
 
         viewModel.userName.set(TAG)
 

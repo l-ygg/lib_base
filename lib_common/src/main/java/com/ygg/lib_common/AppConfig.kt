@@ -1,4 +1,4 @@
-package com.ygg.project_base
+package com.ygg.lib_common
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
