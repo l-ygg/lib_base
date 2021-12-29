@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.github.dcendents.android-maven'
@@ -18,7 +17,6 @@ android {
         versionName rootProject.ext.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -51,13 +49,8 @@ android {
         jvmTarget = "1.8"
     }
 
-    //避免编译不能用于在编译类路径中发现的注解处理器，因为它们中的任何更改都需要运行注解处理任务
-    kapt.includeCompileClasspath = false
-}
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
+//    //避免编译不能用于在编译类路径中发现的注解处理器，因为它们中的任何更改都需要运行注解处理任务
+//    kapt.includeCompileClasspath = false
 }
 
 dependencies {
@@ -68,8 +61,8 @@ dependencies {
 
     api rootProject.ext.androidx["androidx_appcompat"]
     api rootProject.ext.androidx["androidx_recyclerview"]
-    testImplementation rootProject.ext.androidx["junit"]
-    androidTestImplementation rootProject.ext.androidx["test_ext_junit"]
+    api rootProject.ext.androidx["junit"]
+    api rootProject.ext.androidx["test_ext_junit"]
     api rootProject.ext.androidx["legacy"]
     api rootProject.ext.androidx["constraint"]
     api rootProject.ext.androidx["multidex"]
@@ -80,8 +73,8 @@ dependencies {
     api rootProject.ext.androidx["lifecycle_ktx"]
     api rootProject.ext.androidx["lifecycle_viewmodel_ktx"]
     api rootProject.ext.androidx["lifecycle_livedata_ktx"]
-    androidTestImplementation rootProject.ext.androidx["test_runner"]
-    androidTestImplementation rootProject.ext.androidx["test_espresso_core"]
+    api rootProject.ext.androidx["test_runner"]
+    api rootProject.ext.androidx["test_espresso_core"]
     api rootProject.ext.androidx["material"]
 
     api rootProject.ext.dependencies["kotlin_stdlib"]

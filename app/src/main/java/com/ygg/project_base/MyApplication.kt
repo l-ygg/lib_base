@@ -2,7 +2,6 @@ package com.ygg.project_base
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.alibaba.android.arouter.launcher.ARouter
 import com.ygg.lib_base.base.BaseApplication
 import com.ygg.lib_base.log.InternalLog
 import com.ygg.module_login.di.loginViewModelModule
