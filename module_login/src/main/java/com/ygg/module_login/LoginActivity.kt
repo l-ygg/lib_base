@@ -1,7 +1,5 @@
 package com.ygg.module_login
 
-import android.annotation.SuppressLint
-import android.os.Bundle
 import com.ygg.lib_base.base.BaseActivity
 import com.ygg.module_login.databinding.LoginActivityLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,12 +21,14 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
 
     override val viewModel: LoginViewModel by viewModel()
 
+    override fun initContentView(): Int =R.layout.login_activity_login
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity_login)
 
+    override fun initData() {
         viewModel.userName.set(TAG)
+    }
+
+    override fun initViewObservable() {
 
     }
 
