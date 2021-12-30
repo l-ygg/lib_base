@@ -29,6 +29,12 @@ abstract class BaseViewModel : BaseLibViewModel() {
     /** 界面跳转控制 */
     val uiStartActivity = MutableLiveData<UiStartActModel>()
 
+    /** fragment界面跳转控制 */
+    val uiStartContainerActivity = MutableLiveData<UiStartActModel>()
+
+    /** 跳转fragment界面 */
+    val uiStartFragment = MutableLiveData<UiStartActModel>()
+
     /**
      *  加载弹窗
      */

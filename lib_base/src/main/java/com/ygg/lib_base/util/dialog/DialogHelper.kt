@@ -20,6 +20,6 @@ import com.ygg.lib_base.R
  */
 
 
-fun showLoadingDialog(context: Context, title: String?="加载中"): BasePopupView {
+fun showLoadingDialog(context: Context, title: String? = "加载中"): BasePopupView {
     return XPopup.Builder(context).asLoading(title, R.layout.base_loading_dialog).show()
 }

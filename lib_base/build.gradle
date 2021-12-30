@@ -99,5 +99,7 @@ dependencies {
     api rootProject.ext.dependencies["utils"]
     api rootProject.ext.dependencies["xpopup"]
     api rootProject.ext.dependencies["loadingview"]
+    api rootProject.ext.dependencies["fragmentationx"]
+    api rootProject.ext.dependencies["swipeback"]
 
 }

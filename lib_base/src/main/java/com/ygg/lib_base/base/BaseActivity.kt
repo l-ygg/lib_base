@@ -14,9 +14,11 @@ import com.lxj.xpopup.core.BasePopupView
 import com.ygg.lib_base.BR
 import com.ygg.lib_base.R
 import com.ygg.lib_base.activity.BaseBindingLibActivity
+import com.ygg.lib_base.mvvm.ContainerFmActivity
 import com.ygg.lib_base.rotue.RouteCenter
 import com.ygg.lib_base.util.dialog.showLoadingDialog
 import com.ygg.lib_base.viewmodel.BaseLibViewModel
+import me.yokeyword.fragmentation.SupportFragment
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -187,6 +189,16 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
                 dismissLoading()
             }
         })
+
+        // 跳转fragment容器界面
+        viewModel.uiStartContainerActivity.observe(this, {
+            startContainerActivity(it.path, it.bundle)
+        })
+
+        // 跳转fragment界面
+        viewModel.uiStartFragment.observe(this, {
+            startFragment(it.path, it.bundle)
+        })
     }
 
     open fun showLoading(title: String?) {
@@ -218,5 +230,32 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
             intent.putExtras(bundle)
         }
         startActivity(intent)
+    }
+
+    /**
+     * 跳转容器页面
+     * @param routePath Fragment路由地址
+     * @param bundle    跳转所携带的信息
+     */
+    open fun startContainerActivity(
+        routePath: String?,
+        bundle: Bundle? = null
+    ) {
+        val intent = Intent(this, ContainerFmActivity::class.java)
+        intent.putExtra(ContainerFmActivity.FRAGMENT, routePath)
+        bundle?.let {
+            intent.putExtra(ContainerFmActivity.BUNDLE, it)
+        }
+        startActivity(intent)
+    }
+
+    /**
+     *  跳转到fragment界面
+     */
+    fun startFragment(
+        routePath: String,
+        bundle: Bundle? = null
+    ) {
+        start(RouteCenter.navigate(routePath, bundle) as SupportFragment)
     }
 }

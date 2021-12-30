@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ygg.lib_base.R
 import com.ygg.lib_base.ext.hideSoftKeyboard
 import com.ygg.lib_base.ext.shouldHideInput
+import me.yokeyword.fragmentation_swipeback.SwipeBackActivity
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -20,7 +21,7 @@ import com.ygg.lib_base.ext.shouldHideInput
  * 修改描述：
  * 修改日期
  */
-abstract class BaseLibActivity : AppCompatActivity() {
+abstract class BaseLibActivity : SwipeBackActivity() {
 
     /** 当前界面 Context 对象*/
     protected lateinit var mContext: AppCompatActivity
