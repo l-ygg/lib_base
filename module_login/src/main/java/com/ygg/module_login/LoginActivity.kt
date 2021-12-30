@@ -29,7 +29,6 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
 
     override fun initData() {
         viewModel.toolbarTitle.set("登录")
-        viewModel.userName.set(TAG)
     }
 
     override fun initViewObservable() {

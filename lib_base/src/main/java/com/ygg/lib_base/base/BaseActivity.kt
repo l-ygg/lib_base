@@ -10,10 +10,12 @@ import androidx.databinding.ViewDataBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
+import com.lxj.xpopup.core.BasePopupView
 import com.ygg.lib_base.BR
 import com.ygg.lib_base.R
 import com.ygg.lib_base.activity.BaseBindingLibActivity
 import com.ygg.lib_base.rotue.RouteCenter
+import com.ygg.lib_base.util.dialog.showLoadingDialog
 import com.ygg.lib_base.viewmodel.BaseLibViewModel
 
 /**
@@ -35,6 +37,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
 
     val TAG: String = javaClass.simpleName
     private var rootBinding: ViewDataBinding? = null
+    private var dialog: BasePopupView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeOnCreate()
@@ -175,6 +178,23 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
                 RouteCenter.navigate(it.path, it.bundle)
             }
         })
+
+        // 加载弹窗
+        viewModel.uiLoadingDialog.observe(this, {
+            if (it.isShow) {
+                showLoading(it.title)
+            } else {
+                dismissLoading()
+            }
+        })
+    }
+
+    open fun showLoading(title: String?) {
+        dialog = showLoadingDialog(this, title)
+    }
+
+    open fun dismissLoading() {
+        dialog?.smartDismiss()
     }
 
     /**

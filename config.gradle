@@ -42,6 +42,8 @@ ext {
             "arouter_compiler_version"    : "1.2.2",
             "toast_version"               : "1.5.2",
             "utils_version"               : "1.31.0",
+            "xpopup_version"              : "2.2.5",
+            "loadingview_version"         : "1.4.0",
     ]
 
     //androidx配置
@@ -135,6 +137,18 @@ ext {
              * - Github: [https://github.com/Blankj/AndroidUtilCode]
              */
             'utils'               : "com.blankj:utilcodex:${versions["utils_version"]}",
+
+            /*
+             *  pop弹窗
+             * - Github: [https://github.com/li-xiaojun/XPopup/]
+             */
+            'xpopup'              : "com.lxj:xpopup:${versions["xpopup_version"]}",
+
+            /*
+             *  加载动画
+             * - Github: [https://github.com/ybq/Android-SpinKit]
+             */
+            'loadingview'         : "com.github.ybq:Android-SpinKit:${versions["loadingview_version"]}",
 
     ]
 }

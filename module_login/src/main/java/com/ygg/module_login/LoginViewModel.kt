@@ -3,6 +3,7 @@ package com.ygg.module_login
 import androidx.databinding.ObservableField
 import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.base.BaseViewModel
+import com.ygg.lib_base.model.UiLoadingDialogModel
 import com.ygg.lib_base.model.UiStartActModel
 import com.ygg.lib_base.util.toast.showSuccessToast
 
@@ -26,8 +27,6 @@ class LoginViewModel : BaseViewModel() {
 
     /** 指纹登录点击 */
     val onLoginClick: () -> Unit = {
-//        uiStartActivity.value = UiStartActModel("/main/TestActivity")
-        LogUtils.i("跳转")
-        showSuccessToast("跳转界面")
+        uiLoadingDialog.value = UiLoadingDialogModel(true)
     }
 }

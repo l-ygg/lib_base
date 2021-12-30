@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.ygg.lib_base.R
 import com.ygg.lib_base.model.UiCloseModel
+import com.ygg.lib_base.model.UiLoadingDialogModel
 import com.ygg.lib_base.model.UiStartActModel
 import com.ygg.lib_base.viewmodel.BaseLibViewModel
 
@@ -27,6 +28,11 @@ abstract class BaseViewModel : BaseLibViewModel() {
 
     /** 界面跳转控制 */
     val uiStartActivity = MutableLiveData<UiStartActModel>()
+
+    /**
+     *  加载弹窗
+     */
+    val uiLoadingDialog = MutableLiveData<UiLoadingDialogModel>()
 
     /** 标题 */
     open val toolbarTitle: ObservableField<String> = ObservableField()
