@@ -31,27 +31,27 @@ abstract class BaseBindingLibFragment<VM : BaseLibViewModel, DB : ViewDataBindin
     : BaseMvvmLibFragment<VM>() {
 
     /** DataBinding 对象 */
-    protected lateinit var mBinding: DB
+    protected lateinit var binding: DB
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        if (null == rootView) {
-            // 初始化 DataBinding
-            mBinding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-
-            // 绑定生命周期管理
-            mBinding.lifecycleOwner = this
-
-            // 绑定 ViewModel
-            mBinding.setVariable(BR.viewModel, viewModel)
-            rootView = mBinding.root
-
-            // 初始化布局
-            initView()
-        } else {
-            (rootView?.parent as? ViewGroup?)?.removeView(rootView)
-        }
-
-        return rootView
-    }
+//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//
+//        if (null == rootView) {
+//            // 初始化 DataBinding
+//            mBinding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
+//
+//            // 绑定生命周期管理
+//            mBinding.lifecycleOwner = this
+//
+//            // 绑定 ViewModel
+//            mBinding.setVariable(BR.viewModel, viewModel)
+//            rootView = mBinding.root
+//
+//            // 初始化布局
+//            initView()
+//        } else {
+//            (rootView?.parent as? ViewGroup?)?.removeView(rootView)
+//        }
+//
+//        return rootView
+//    }
 }

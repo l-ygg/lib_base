@@ -5,6 +5,7 @@ import com.ygg.lib_base.R
 import com.ygg.lib_base.base.BaseActivity
 import com.ygg.lib_base.databinding.BaseActivityContainerBinding
 import com.ygg.lib_base.rotue.RouteCenter
+import com.ygg.lib_base.viewmodel.BlankViewModel
 import me.yokeyword.fragmentation.SupportFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,14 +22,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 修改描述：
  * 修改日期
  */
-class ContainerFmActivity : BaseActivity<ContainerViewModel, BaseActivityContainerBinding>() {
+class ContainerFmActivity : BaseActivity<BlankViewModel, BaseActivityContainerBinding>() {
 
     companion object {
         const val FRAGMENT = "fragment"
         const val BUNDLE = "bundle"
     }
 
-    override val viewModel: ContainerViewModel by viewModel()
+    override val viewModel: BlankViewModel by viewModel()
     override fun initContentView(): Int = R.layout.base_activity_container
 
     override fun initData() {

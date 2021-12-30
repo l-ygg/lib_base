@@ -20,13 +20,11 @@ import com.ygg.lib_base.util.toast.showSuccessToast
  * 修改描述：
  * 修改日期
  */
-class LoginViewModel : BaseViewModel() {
+class TestViewModel : BaseViewModel() {
 
-    /** 用户名 */
-    val userName: ObservableField<String> = ObservableField("test")
 
     /** 指纹登录点击 */
-    val onLoginClick: () -> Unit = {
-        uiStartContainerActivity.value= UiStartActModel("/main/TestFragment")
+    val onTestClick: () -> Unit = {
+        uiStartFragment.value= UiStartActModel("/main/TestFragment")
     }
 }

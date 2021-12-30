@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.ygg.lib_base.mvvm.ContainerViewModel" />
+            type="com.ygg.lib_base.viewmodel.BlankViewModel" />
     </data>
 
     <FrameLayout

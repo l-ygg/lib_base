@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import me.yokeyword.fragmentation.SupportFragment
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -23,16 +24,16 @@ import androidx.fragment.app.FragmentActivity
  * 修改描述：
  * 修改日期
  */
-abstract class BaseLibFragment: Fragment() {
+abstract class BaseLibFragment: SupportFragment() {
 
     /** 当前界面 Context 对象*/
     protected lateinit var mContext: FragmentActivity
 
-    /** 跟布局对象 */
-    protected var rootView: View? = null
-
-    /** 页面标题 */
-    open val pageTitle: String? = null
+//    /** 跟布局对象 */
+//    protected var rootView: View? = null
+//
+//    /** 页面标题 */
+//    open val pageTitle: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,25 +42,25 @@ abstract class BaseLibFragment: Fragment() {
         mContext = requireActivity()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        if (rootView == null) {
-            rootView = inflater.inflate(layoutResId, container, false)
-            // 初始化布局
-            initView()
-        } else {
-            (rootView?.parent as? ViewGroup?)?.removeView(rootView)
-        }
-
-        return rootView
-    }
-
-    /** 界面布局 id */
-    abstract val layoutResId: Int
-
-    /**
-     * 初始化布局
-     */
-    abstract fun initView()
+//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//
+//        if (rootView == null) {
+//            rootView = inflater.inflate(layoutResId, container, false)
+//            // 初始化布局
+//            initView()
+//        } else {
+//            (rootView?.parent as? ViewGroup?)?.removeView(rootView)
+//        }
+//
+//        return rootView
+//    }
+//
+//    /** 界面布局 id */
+//    abstract val layoutResId: Int
+//
+//    /**
+//     * 初始化布局
+//     */
+//    abstract fun initView()
 
 }
