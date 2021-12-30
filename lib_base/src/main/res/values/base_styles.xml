@@ -22,4 +22,10 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
+    <!--Toolbar-->
+    <style name="actionBarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
+
 </resources>

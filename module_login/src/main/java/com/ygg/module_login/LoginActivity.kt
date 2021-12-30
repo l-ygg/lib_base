@@ -21,10 +21,14 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
 
     override val viewModel: LoginViewModel by viewModel()
 
+    override fun useBaseLayout(): Boolean {
+        return true
+    }
+
     override fun initContentView(): Int =R.layout.login_activity_login
 
-
     override fun initData() {
+        viewModel.toolbarTitle.set("登录")
         viewModel.userName.set(TAG)
     }
 

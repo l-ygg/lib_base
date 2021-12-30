@@ -23,23 +23,23 @@ abstract class BaseBindingLibActivity<VM : BaseLibViewModel, DB : ViewDataBindin
     BaseMvvmLibActivity<VM>() {
 
     /** DataBinding 对象 */
-    protected lateinit var mBinding: DB
+    protected lateinit var binding: DB
 
-    override fun setContentView(layoutResID: Int) {
-        // 初始化 DataBinding
-        mBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(mContext),
-            layoutResID, null, false
-        )
-
-        // 绑定生命周期管理
-        mBinding.lifecycleOwner = this
-
-        // 绑定 ViewModel
-        mBinding.setVariable(BR.viewModel, viewModel)
-
-        // 设置布局
-        super.setContentView(mBinding.root)
-    }
+//    override fun setContentView(layoutResID: Int) {
+//        // 初始化 DataBinding
+//        mBinding = DataBindingUtil.inflate(
+//            LayoutInflater.from(mContext),
+//            layoutResID, null, false
+//        )
+//
+//        // 绑定生命周期管理
+//        mBinding.lifecycleOwner = this
+//
+//        // 绑定 ViewModel
+//        mBinding.setVariable(BR.viewModel, viewModel)
+//
+//        // 设置布局
+//        super.setContentView(mBinding.root)
+//    }
 
 }

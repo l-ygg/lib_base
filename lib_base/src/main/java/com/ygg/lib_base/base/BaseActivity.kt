@@ -1,9 +1,14 @@
 package com.ygg.lib_base.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
+import com.ygg.lib_base.BR
 import com.ygg.lib_base.R
 import com.ygg.lib_base.activity.BaseBindingLibActivity
 import com.ygg.lib_base.rotue.RouteCenter
@@ -27,14 +32,13 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
     BaseBindingLibActivity<VM, DB>() {
 
     val TAG: String = javaClass.simpleName
+    private var rootBinding: ViewDataBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //页面接受的参数方法
         initParam()
-
-
 
         //初始化根布局
         initViewDataBinding(savedInstanceState)
@@ -97,7 +101,16 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
      * @return 是否需要标题栏
      */
     protected open fun useBaseLayout(): Boolean {
-        return false
+        return true
+    }
+
+    /**
+     * 添加根内容布局id（目前在xml内加了标题栏）
+     *
+     * @return
+     */
+    protected open fun addParentContentView(): Int {
+        return 0
     }
 
 
@@ -106,10 +119,33 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
      */
     private fun initViewDataBinding(savedInstanceState: Bundle?) {
         if (useBaseLayout()) {
-
+            setContentView(R.layout.base_activity_base)
+            val mActivityRoot = findViewById<ViewGroup>(R.id.ll_root)
+            var parentContent: View = mActivityRoot
+            // 绑定根布局
+            rootBinding = DataBindingUtil.bind(parentContent)
+            rootBinding?.setVariable(BR.viewModel, viewModel)
+            rootBinding?.lifecycleOwner = this
+            // 在根布局添加公共布局 目前只添加了标题栏
+            if (addParentContentView() != 0) {
+                parentContent = LayoutInflater.from(this).inflate(addParentContentView(), null)
+                mActivityRoot.addView(parentContent)
+            }
+            binding = DataBindingUtil.inflate(
+                layoutInflater,
+                initContentView(),
+                parentContent as ViewGroup,
+                true
+            )
         } else {
-            setContentView(initContentView())
+            // 初始化 DataBinding
+            binding = DataBindingUtil.setContentView(this, initContentView())
         }
+        // 绑定生命周期管理
+        binding.lifecycleOwner = this
+
+        // 绑定 ViewModel
+        binding.setVariable(BR.viewModel, viewModel)
     }
 
     /**
@@ -119,7 +155,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
     private fun observeData() {
 
         // 关闭页面
-        viewModel.uiCloseData.observe(this, {
+        viewModel.uiCloseActivity.observe(this, {
             it?.let {
                 setResult(it.resultCode, it.result)
             }
