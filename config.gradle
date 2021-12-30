@@ -40,6 +40,8 @@ ext {
             "immersion_bar_version"       : "3.0.0",
             "arouter_version"             : "1.4.1",
             "arouter_compiler_version"    : "1.2.2",
+            "toast_version"               : "1.5.2",
+            "utils_version"               : "1.31.0",
     ]
 
     //androidx配置
@@ -121,5 +123,18 @@ ext {
             */
             'arouter_api'         : "com.alibaba:arouter-api:${versions["arouter_version"]}",
             'arouter_compiler'    : "com.alibaba:arouter-compiler:${versions["arouter_compiler_version"]}",
+
+            /*
+             * toast弹窗工具
+             * -Github:  [https://github.com/GrenderG/Toasty]
+             */
+            'toast'               : "com.github.GrenderG:Toasty:${versions["toast_version"]}",
+
+            /*
+             *  实用工具类
+             * - Github: [https://github.com/Blankj/AndroidUtilCode]
+             */
+            'utils'               : "com.blankj:utilcodex:${versions["utils_version"]}",
+
     ]
 }

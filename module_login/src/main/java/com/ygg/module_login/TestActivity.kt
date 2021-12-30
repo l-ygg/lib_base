@@ -1,8 +1,9 @@
 package com.ygg.module_login
 
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ygg.lib_base.base.BaseActivity
+import com.ygg.lib_base.util.toast.showSuccessLongToast
+import com.ygg.lib_base.util.toast.showSuccessToast
 import com.ygg.lib_base.viewmodel.BlankViewModel
 import com.ygg.module_login.databinding.LoginActivityTestBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

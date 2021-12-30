@@ -1,8 +1,10 @@
 package com.ygg.module_login
 
 import androidx.databinding.ObservableField
+import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.model.UiStartActModel
+import com.ygg.lib_base.util.toast.showSuccessToast
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -24,6 +26,8 @@ class LoginViewModel : BaseViewModel() {
 
     /** 指纹登录点击 */
     val onLoginClick: () -> Unit = {
-        uiStartActivity.value = UiStartActModel("/main/TestActivity")
+//        uiStartActivity.value = UiStartActModel("/main/TestActivity")
+        LogUtils.i("跳转")
+        showSuccessToast("跳转界面")
     }
 }

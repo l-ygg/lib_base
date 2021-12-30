@@ -1,11 +1,13 @@
 package com.ygg.lib_base.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.ktx.immersionBar
 import com.ygg.lib_base.BR
@@ -35,6 +37,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
     private var rootBinding: ViewDataBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        beforeOnCreate()
         super.onCreate(savedInstanceState)
 
         //页面接受的参数方法
@@ -113,6 +116,10 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
         return 0
     }
 
+    /** [onCreate] 之前执行，可用于配置动画 */
+    protected open fun beforeOnCreate() {
+    }
+
 
     /**
      * 注入绑定
@@ -168,5 +175,28 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
                 RouteCenter.navigate(it.path, it.bundle)
             }
         })
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz 所跳转的目的Activity类
+     */
+    fun startActivity(clz: Class<*>?) {
+        startActivity(Intent(this, clz))
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz    所跳转的目的Activity类
+     * @param bundle 跳转所携带的信息
+     */
+    fun startActivity(clz: Class<*>?, bundle: Bundle?) {
+        val intent = Intent(this, clz)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
+        startActivity(intent)
     }
 }

@@ -26,12 +26,10 @@ import org.koin.core.logger.Level
  */
 class MyApplication : BaseApplication() {
 
-    @SuppressLint("MissingSuperCall")
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
-            Log.e("TAG","初始化")
             androidLogger()
             androidContext(this@MyApplication)
             modules(listOf(loginViewModelModule, baseViewModelModule))

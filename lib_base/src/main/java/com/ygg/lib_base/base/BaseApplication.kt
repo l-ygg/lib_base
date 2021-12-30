@@ -31,7 +31,6 @@ abstract class BaseApplication : Application() {
         // 初始化 ARouter
         // Debug 模式或非线上模式
         if (BuildConfig.DEBUG) {
-            Log.e("TAG", "开启日志打印")
             ARouter.openLog()
             ARouter.openDebug()
             ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
