@@ -14,4 +14,8 @@ package com.ygg.lib_common.constants
  * 修改日期
  */
 
-const val A_MAIN = "/main/MainActivity"
+/** 路由组 - 用户 */
+const val ROUTER_GROUP_LOGIN = "/login"
+
+/** 登录页面 [LoginActivity] */
+const val ROUTER_PATH_LOGIN = "$ROUTER_GROUP_LOGIN/login"

@@ -1,9 +1,10 @@
-package com.ygg.module_login
+package com.ygg.module_login.ui
 
-import com.blankj.utilcode.util.LogUtils
-import com.jeremyliao.liveeventbus.LiveEventBus
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ygg.lib_base.base.BaseActivity
-import com.ygg.lib_common.event.EVENT_COLLECTION_CANCELLED
+import com.ygg.lib_common.constants.ROUTER_PATH_LOGIN
+import com.ygg.module_login.viewmodel.LoginViewModel
+import com.ygg.module_login.R
 import com.ygg.module_login.databinding.LoginActivityLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,6 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 修改描述：
  * 修改日期
  */
+@Route(path = ROUTER_PATH_LOGIN)
 class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() {
 
     override val viewModel: LoginViewModel by viewModel()
@@ -35,11 +37,6 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
     }
 
     override fun initViewObservable() {
-        // LiveEvent
-        LiveEventBus.get(EVENT_COLLECTION_CANCELLED,TestBean::class.java)
-            .observe(this, {
-                LogUtils.i(it.num)
-            })
     }
 
 }

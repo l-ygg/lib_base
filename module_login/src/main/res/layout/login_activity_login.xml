@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ygg.module_login.LoginViewModel" />
+            type="com.ygg.module_login.viewmodel.LoginViewModel" />
 
     </data>
 

@@ -1,4 +1,4 @@
-package com.ygg.module_login
+package com.ygg.lib_common.constants
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -13,6 +13,7 @@ package com.ygg.module_login
  * 修改描述：
  * 修改日期
  */
-data class TestBean(
-    var num: Int
-)
+
+
+/** 欢迎界面延时时间 */
+const val SPLASH_DELAY_MS = 1_000L

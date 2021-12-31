@@ -70,9 +70,8 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
     /** 初始化状态栏相关配置 */
     private fun initImmersionbar() {
         immersionBar {
-            statusBarColor(R.color.app_immersion_bar)
-            statusBarDarkFont(false)
-            fitsSystemWindows(true)
+            statusBarDarkFont(false, 0.2f)
+            transparentStatusBar()
             initImmersionbar(this)
             addTag(TAG)
         }
