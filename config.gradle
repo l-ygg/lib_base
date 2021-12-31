@@ -51,6 +51,7 @@ ext {
             "mmkv_version"                : "1.2.5",
             "live_event_bus_version"      : "1.7.2",
             "autosize_version"            : "1.1.2",
+            "coil_version"            : "1.1.0",
     ]
 
     //androidx配置
@@ -201,6 +202,16 @@ ext {
              * - Github: [https://github.com/JessYanCoding/AndroidAutoSize]
              */
             "autosize"             : "me.jessyan:autosize:${versions["autosize_version"]}",
+
+            /*
+             *  图片加载
+             * - Github: [https://github.com/coil-kt/coil]
+             */
+            "coil"                 : "io.coil-kt:coil:${versions["coil_version"]}",
+            "coil_base"            : "io.coil-kt:coil-base:${versions["coil_version"]}",
+            "coil_gif"             : "io.coil-kt:coil-gif:${versions["coil_version"]}",
+            "coil_svg"             : "io.coil-kt:coil-svg:${versions["coil_version"]}",
+            "coil_video"           : "io.coil-kt:coil-video:${versions["coil_version"]}",
 
     ]
 }

@@ -112,4 +112,10 @@ dependencies {
     api rootProject.ext.dependencies["live_event_bus"]
 
     api rootProject.ext.dependencies["autosize"]
+
+    api rootProject.ext.dependencies["coil"]
+    api rootProject.ext.dependencies["coil_base"]
+    api rootProject.ext.dependencies["coil_gif"]
+    api rootProject.ext.dependencies["coil_svg"]
+    api rootProject.ext.dependencies["coil_video"]
 }
