@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.util.Log
 import com.ygg.lib_base.base.BaseApplication
 import com.ygg.lib_base.log.InternalLog
+import com.ygg.lib_base.net.RetrofitClient
+import com.ygg.lib_common.di.netModule
+import com.ygg.lib_common.di.repositoryModule
+import com.ygg.lib_common.net.UrlDefinition
 import com.ygg.module_login.di.loginViewModelModule
 import com.ygg.project_base.di.baseViewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -29,11 +33,15 @@ class MyApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
 
+        RetrofitClient.baseUrl=UrlDefinition.BASE_URL
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(listOf(loginViewModelModule, baseViewModelModule))
+            modules(listOf(loginViewModelModule, baseViewModelModule, netModule,repositoryModule))
         }
+
+
+
     }
 
 }

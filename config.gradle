@@ -33,7 +33,7 @@ ext {
             "kotlin_coroutines_version"   : "1.4.0",
             "kotlin_serialization_version": "1.0.1",
 
-            "gson_version"                : "2.8.6",
+            "gson_version"                : "2.8.5",
 
             "koin_version"                : "2.2.3",
 
@@ -46,6 +46,8 @@ ext {
             "loadingview_version"         : "1.4.0",
             "fragmentationx_version"      : "1.0.2",
             "swipeback_version"           : "1.3.7",
+            "okhttp_version"              : "3.10.0",
+            "retrofit_version"            : "2.9.0",
     ]
 
     //androidx配置
@@ -81,88 +83,103 @@ ext {
     dependencies = [
 
             /* kotlin */
-            'kotlin_stdlib'       : "org.jetbrains.kotlin:kotlin-stdlib:${versions["kotlin_version"]}",
-            'kotlin_jdk7'         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions["kotlin_version"]}",
-            'kotlin_jdk8'         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions["kotlin_version"]}",
-            'kotlin_reflect'      : "org.jetbrains.kotlin:kotlin-reflect:${versions["kotlin_version"]}",
+            'kotlin_stdlib'        : "org.jetbrains.kotlin:kotlin-stdlib:${versions["kotlin_version"]}",
+            'kotlin_jdk7'          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions["kotlin_version"]}",
+            'kotlin_jdk8'          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions["kotlin_version"]}",
+            'kotlin_reflect'       : "org.jetbrains.kotlin:kotlin-reflect:${versions["kotlin_version"]}",
 
             /*
             *kotlin Json 序列化
             * - Github: [https://github.com/Kotlin/kotlinx.serialization]
             */
-            'kotlin_serialization': "org.jetbrains.kotlinx:kotlinx-serialization-json:${versions["kotlin_serialization_version"]}",
+            'kotlin_serialization' : "org.jetbrains.kotlinx:kotlinx-serialization-json:${versions["kotlin_serialization_version"]}",
 
             /*
              * Gson
              * - Github：[https://github.com/google/gson]
              * */
-            "gson"                : "com.google.code.gson:gson:${versions["gson_version"]}",
+            "gson"                 : "com.google.code.gson:gson:${versions["gson_version"]}",
 
             /*
              * Koin
              * - Github：[https://github.com/InsertKoinIO/koin]
              */
-            'koin_scope'          : "io.insert-koin:koin-androidx-scope:${versions["koin_version"]}",
-            'koin_viewmodel'      : "io.insert-koin:koin-androidx-viewmodel:${versions["koin_version"]}",
-            'koin_fragment'       : "io.insert-koin:koin-androidx-fragment:${versions["koin_version"]}",
-            'koin_workmanager'    : "io.insert-koin:koin-androidx-workmanager:${versions["koin_version"]}",
-            'koin_compose'        : "io.insert-koin:koin-androidx-compose:${versions["koin_version"]}",
-            'koin_ext'            : "io.insert-koin:koin-androidx-ext:${versions["koin_version"]}",
+            'koin_scope'           : "io.insert-koin:koin-androidx-scope:${versions["koin_version"]}",
+            'koin_viewmodel'       : "io.insert-koin:koin-androidx-viewmodel:${versions["koin_version"]}",
+            'koin_fragment'        : "io.insert-koin:koin-androidx-fragment:${versions["koin_version"]}",
+            'koin_workmanager'     : "io.insert-koin:koin-androidx-workmanager:${versions["koin_version"]}",
+            'koin_compose'         : "io.insert-koin:koin-androidx-compose:${versions["koin_version"]}",
+            'koin_ext'             : "io.insert-koin:koin-androidx-ext:${versions["koin_version"]}",
 
             /* kotlin 携程
             - 指南：[https://www.kotlincn.net/docs/reference/coroutines/coroutines-guide.html]
             - Github：[https://github.com/Kotlin/kotlinx.coroutines]
             */
-            'kotlin_coroutines'   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions["kotlin_coroutines_version"]}",
+            'kotlin_coroutines'    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions["kotlin_coroutines_version"]}",
 
             /* 状态栏工具
              * - Github: [https://github.com/gyf-dev/ImmersionBar]
              *  */
-            'immersion_bar'       : "com.gyf.immersionbar:immersionbar:${versions["immersion_bar_version"]}",
-            'immersion_bar_ktx'   : "com.gyf.immersionbar:immersionbar-ktx:${versions["immersion_bar_version"]}",
+            'immersion_bar'        : "com.gyf.immersionbar:immersionbar:${versions["immersion_bar_version"]}",
+            'immersion_bar_ktx'    : "com.gyf.immersionbar:immersionbar-ktx:${versions["immersion_bar_version"]}",
 
             /*
             * ARouter 路由
             * - Github: [https://github.com/alibaba/ARouter]
             */
-            'arouter_api'         : "com.alibaba:arouter-api:${versions["arouter_version"]}",
-            'arouter_compiler'    : "com.alibaba:arouter-compiler:${versions["arouter_compiler_version"]}",
+            'arouter_api'          : "com.alibaba:arouter-api:${versions["arouter_version"]}",
+            'arouter_compiler'     : "com.alibaba:arouter-compiler:${versions["arouter_compiler_version"]}",
 
             /*
              * toast弹窗工具
              * -Github:  [https://github.com/GrenderG/Toasty]
              */
-            'toast'               : "com.github.GrenderG:Toasty:${versions["toast_version"]}",
+            'toast'                : "com.github.GrenderG:Toasty:${versions["toast_version"]}",
 
             /*
              *  实用工具类
              * - Github: [https://github.com/Blankj/AndroidUtilCode]
              */
-            'utils'               : "com.blankj:utilcodex:${versions["utils_version"]}",
+            'utils'                : "com.blankj:utilcodex:${versions["utils_version"]}",
 
             /*
              *  pop弹窗
              * - Github: [https://github.com/li-xiaojun/XPopup/]
              */
-            'xpopup'              : "com.lxj:xpopup:${versions["xpopup_version"]}",
+            'xpopup'               : "com.lxj:xpopup:${versions["xpopup_version"]}",
 
             /*
              *  加载动画
              * - Github: [https://github.com/ybq/Android-SpinKit]
              */
-            'loadingview'         : "com.github.ybq:Android-SpinKit:${versions["loadingview_version"]}",
+            'loadingview'          : "com.github.ybq:Android-SpinKit:${versions["loadingview_version"]}",
 
             /*
              *  fragment管理
              * - Github: [https://github.com/YoKeyword/Fragmentation/tree/master]
              */
-            'fragmentationx'      : "me.yokeyword:fragmentationx:${versions["fragmentationx_version"]}",
+            'fragmentationx'       : "me.yokeyword:fragmentationx:${versions["fragmentationx_version"]}",
 
             /*
              *  Activity侧滑返回
              * - Github: [https://github.com/YoKeyword/Fragmentation/tree/master]
              */
-            'swipeback'           : "me.yokeyword:fragmentation-swipeback:${versions["swipeback_version"]}",
+            'swipeback'            : "me.yokeyword:fragmentation-swipeback:${versions["swipeback_version"]}",
+
+            /*
+             *  okhttp
+             * - Github: [https://github.com/square/okhttp]
+             */
+            'okhttp'               : "com.squareup.okhttp3:okhttp:${versions["okhttp_version"]}",
+
+            /*
+             *  Retrofit
+             * - Github: [https://github.com/square/retrofit]
+             */
+            'retrofit'             : "com.squareup.retrofit2:retrofit:${versions["retrofit_version"]}",
+            'retrofit_converter_kt': "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
+            "converter_gson"       : "com.squareup.retrofit2:converter-gson:2.4.0",
+            "adapter_rxjava"       : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
 
     ]
 }

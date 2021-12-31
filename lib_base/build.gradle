@@ -83,7 +83,6 @@ dependencies {
 
     api rootProject.ext.dependencies["gson"]
 
-
     api rootProject.ext.dependencies["koin_scope"]
     api rootProject.ext.dependencies["koin_viewmodel"]
     api rootProject.ext.dependencies["koin_ext"]
@@ -101,5 +100,11 @@ dependencies {
     api rootProject.ext.dependencies["loadingview"]
     api rootProject.ext.dependencies["fragmentationx"]
     api rootProject.ext.dependencies["swipeback"]
+
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit_converter_kt"]
+    api rootProject.ext.dependencies["converter_gson"]
+    api rootProject.ext.dependencies["adapter_rxjava"]
 
 }

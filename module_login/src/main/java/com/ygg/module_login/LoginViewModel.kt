@@ -1,11 +1,15 @@
 package com.ygg.module_login
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.model.UiLoadingDialogModel
 import com.ygg.lib_base.model.UiStartActModel
+import com.ygg.lib_base.net.request
+import com.ygg.lib_base.util.toast.showErrorToast
 import com.ygg.lib_base.util.toast.showSuccessToast
+import com.ygg.lib_common.repository.UserRepository
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -20,13 +24,15 @@ import com.ygg.lib_base.util.toast.showSuccessToast
  * 修改描述：
  * 修改日期
  */
-class LoginViewModel : BaseViewModel() {
+class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
 
     /** 用户名 */
     val userName: ObservableField<String> = ObservableField("test")
 
     /** 指纹登录点击 */
     val onLoginClick: () -> Unit = {
-        uiStartContainerActivity.value= UiStartActModel("/main/TestFragment")
+        request({ repository.login("123456", "123456") }, {
+            LogUtils.i("登录成功")
+        })
     }
 }
