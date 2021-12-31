@@ -109,4 +109,6 @@ dependencies {
 
     api rootProject.ext.dependencies["tencent_mmkv"]
 
+    api rootProject.ext.dependencies["live_event_bus"]
+
 }

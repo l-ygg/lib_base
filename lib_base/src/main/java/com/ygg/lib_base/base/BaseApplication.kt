@@ -3,6 +3,7 @@ package com.ygg.lib_base.base
 import android.app.Application
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.ygg.lib_base.BuildConfig
 import com.ygg.lib_base.log.InternalLog
 import org.koin.android.ext.koin.androidContext
@@ -36,6 +37,12 @@ abstract class BaseApplication : Application() {
             ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
         }
         ARouter.init(this)
+
+        // 初始化LiveDataBus
+        LiveEventBus
+            .config()
+            .lifecycleObserverAlwaysActive(true)
+            .autoClear(false)
     }
 
 }

@@ -5,6 +5,7 @@ import com.ygg.lib_base.base.BaseActivity
 import com.ygg.lib_base.util.toast.showSuccessLongToast
 import com.ygg.lib_base.util.toast.showSuccessToast
 import com.ygg.lib_base.viewmodel.BlankViewModel
+import com.ygg.lib_common.constants.A_MAIN
 import com.ygg.module_login.databinding.LoginActivityTestBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,10 +22,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * 修改描述：
  * 修改日期
  */
-@Route(path = "/main/TestActivity")
-class TestActivity : BaseActivity<BlankViewModel, LoginActivityTestBinding>() {
+@Route(path = A_MAIN)
+class TestActivity : BaseActivity<TestViewModel, LoginActivityTestBinding>() {
 
-    override val viewModel: BlankViewModel by viewModel()
+    override val viewModel: TestViewModel by viewModel()
 
     override fun initContentView(): Int = R.layout.login_activity_test
 

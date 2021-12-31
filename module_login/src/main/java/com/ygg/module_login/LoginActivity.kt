@@ -1,6 +1,9 @@
 package com.ygg.module_login
 
+import com.blankj.utilcode.util.LogUtils
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.ygg.lib_base.base.BaseActivity
+import com.ygg.lib_common.event.EVENT_COLLECTION_CANCELLED
 import com.ygg.module_login.databinding.LoginActivityLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,14 +28,18 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
         return true
     }
 
-    override fun initContentView(): Int =R.layout.login_activity_login
+    override fun initContentView(): Int = R.layout.login_activity_login
 
     override fun initData() {
         viewModel.toolbarTitle.set("登录")
     }
 
     override fun initViewObservable() {
-
+        // LiveEvent
+        LiveEventBus.get(EVENT_COLLECTION_CANCELLED,TestBean::class.java)
+            .observe(this, {
+                LogUtils.i(it.num)
+            })
     }
 
 }
