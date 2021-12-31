@@ -107,4 +107,6 @@ dependencies {
     api rootProject.ext.dependencies["converter_gson"]
     api rootProject.ext.dependencies["adapter_rxjava"]
 
+    api rootProject.ext.dependencies["tencent_mmkv"]
+
 }
