@@ -111,4 +111,5 @@ dependencies {
 
     api rootProject.ext.dependencies["live_event_bus"]
 
+    api rootProject.ext.dependencies["autosize"]
 }

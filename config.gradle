@@ -50,6 +50,7 @@ ext {
             "retrofit_version"            : "2.9.0",
             "mmkv_version"                : "1.2.5",
             "live_event_bus_version"      : "1.7.2",
+            "autosize_version"            : "1.1.2",
     ]
 
     //androidx配置
@@ -194,6 +195,12 @@ ext {
              * - Github: [https://github.com/JeremyLiao/LiveEventBus]
              */
             "live_event_bus"       : "com.jeremyliao:live-event-bus-x:${versions["live_event_bus_version"]}",
+
+            /*
+             *  自适应布局
+             * - Github: [https://github.com/JessYanCoding/AndroidAutoSize]
+             */
+            "autosize"             : "me.jessyan:autosize:${versions["autosize_version"]}",
 
     ]
 }
