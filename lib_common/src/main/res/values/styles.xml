@@ -24,4 +24,15 @@
         <item name="android:activityOpenEnterAnimation">@anim/anim_scale_in</item>
     </style>
 
+    <style name="TextInputWhiteStyle" parent="AppTheme">
+        <!--输入框提示字体色-->
+        <item name="android:textColorHint">#ffffff</item>
+        <!--输入框下划线默认颜色-->
+        <!--        <item name="colorControlNormal">@color/white</item>-->
+        <!--输入框下划线选中状态色-->
+        <item name="colorControlActivated">#ffffff</item>
+        <!--输入框光标颜色-->
+        <item name="colorControlHighlight">#ffffff</item>
+    </style>
+
 </resources>

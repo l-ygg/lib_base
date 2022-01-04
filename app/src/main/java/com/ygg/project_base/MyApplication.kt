@@ -10,6 +10,7 @@ import com.ygg.lib_common.di.repositoryModule
 import com.ygg.lib_common.net.UrlDefinition
 import com.ygg.module_login.di.loginViewModelModule
 import com.ygg.project_base.di.baseViewModelModule
+import me.jessyan.autosize.AutoSizeConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -40,6 +41,9 @@ class MyApplication : BaseApplication() {
             modules(listOf(loginViewModelModule, baseViewModelModule, netModule,repositoryModule))
         }
 
+        // 屏幕适配
+        AutoSizeConfig.getInstance().setCustomFragment(true).setBaseOnWidth(false)
+            .setExcludeFontScale(true).designHeightInDp = 720
 
 
     }

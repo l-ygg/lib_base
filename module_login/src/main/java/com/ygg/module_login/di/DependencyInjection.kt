@@ -1,6 +1,7 @@
 package com.ygg.module_login.di
 
 import com.ygg.module_login.viewmodel.LoginViewModel
+import com.ygg.module_login.viewmodel.RegisterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -22,4 +23,5 @@ import org.koin.dsl.module
 /** ViewModel Module */
 val loginViewModelModule: Module = module {
     viewModel { LoginViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
 }

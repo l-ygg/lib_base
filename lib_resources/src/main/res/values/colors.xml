@@ -5,4 +5,8 @@
     <color name="mColorPrimaryDark">#303030</color>
     <color name="mColorAccent">#EF5350</color>
 
+    <color name="gray_DF">#DFDFDF</color>
+    <color name="color_black">#DFDFDF</color>
+    <color name="color_white">#FFFFFF</color>
+
 </resources>

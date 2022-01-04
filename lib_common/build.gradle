@@ -11,4 +11,6 @@ dependencies {
 //    implementation 'com.github.l-ygg:lib_base:1.0.1'
     //组件依赖资源库
     api project(':lib_resources')
+
+    api rootProject.ext.dependencies["lottie"]
 }

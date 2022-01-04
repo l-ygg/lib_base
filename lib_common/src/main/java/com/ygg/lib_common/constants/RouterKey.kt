@@ -19,3 +19,6 @@ const val ROUTER_GROUP_LOGIN = "/login"
 
 /** 登录页面 [LoginActivity] */
 const val ROUTER_PATH_LOGIN = "$ROUTER_GROUP_LOGIN/login"
+
+/** 注册页面 [RegisterActivity] */
+const val ROUTER_PATH_REGISTER = "$ROUTER_GROUP_LOGIN/register"

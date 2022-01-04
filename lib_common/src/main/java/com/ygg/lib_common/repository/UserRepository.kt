@@ -23,4 +23,9 @@ class UserRepository(private val apiService: ApiService) {
         apiService.login(username, password)
     }
 
+    /** 通过用户名[username]、密码[password]注册用户并返回用户信息 */
+    suspend fun register(username: String, password: String) = netRequest {
+        apiService.register(username, password)
+    }
+
 }

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.ygg.module_login.viewmodel.LoginViewModel" />
-
+            type="com.ygg.module_login.viewmodel.RegisterViewModel" />
     </data>
 
     <com.ygg.lib_common.widget.SrcScrollFrameLayout
@@ -21,29 +18,29 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:background="@color/color_black">
+            android:layout_height="match_parent">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottieAnimationView"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="80dp"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:bind_onClick="@{viewModel.backClick}"
+                android:padding="@dimen/dp_10"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="android-logo.json"
-                app:lottie_loop="true" />
+                app:srcCompat="@drawable/ic_back_white" />
 
             <TextView
                 android:id="@+id/tvLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="欢迎使用"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/sp_30"
+                android:layout_marginTop="100dp"
+                android:text="注册"
+                android:textColor="#ffffff"
+                android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lottieAnimationView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tlAccount"
@@ -52,96 +49,110 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="60dp"
                 android:layout_marginEnd="40dp"
-                android:textColorHint="#FFFFFF"
-                app:hintTextColor="#FFFFFF"
+                android:textColorHint="#ffffff"
+                app:hintTextColor="#ffffff"
                 app:layout_constraintTop_toBottomOf="@id/tvLogin">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAccount"
+                    style="@style/TextInputWhiteStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#ffffff"
                     android:hint="账号"
                     android:maxLines="1"
                     android:padding="10dp"
                     android:singleLine="true"
                     android:text="@={viewModel.account}"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
                     android:theme="@style/TextInputWhiteStyle" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
+                style="@style/TextInputWhiteStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
-                android:textColorHint="#FFFFFF"
-                app:hintTextColor="#FFFFFF"
+                android:textColorHint="#ffffff"
+                app:hintTextColor="#ffffff"
                 app:layout_constraintTop_toBottomOf="@id/tlAccount"
-                app:passwordToggleEnabled="true"
                 app:passwordToggleTint="#ffffff">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPwd"
+                    style="@style/TextInputWhiteStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#ffffff"
                     android:hint="密码"
-                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:padding="10dp"
                     android:singleLine="true"
                     android:text="@={viewModel.pwd}"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#ffffff"
+                    android:theme="@style/TextInputWhiteStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_repassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:hint=""
+                android:textColorHint="#ffffff"
+                app:hintTextColor="#ffffff"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+                app:passwordToggleTint="#ffffff">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pwd_confirm"
+                    style="@style/TextInputWhiteStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ffffff"
+                    android:hint="确认密码"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.rePwd}"
+                    android:textColor="#ffffff"
                     android:theme="@style/TextInputWhiteStyle" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btn_register"
+                style="@style/TextInputWhiteStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
                 android:background="@drawable/gray_btn_corner_10dp"
-                android:bind_onClick="@{viewModel.loginClick}"
-                android:text="登录"
+                android:text="注册"
                 android:textColor="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:bind_onClick="@{viewModel.registerClick}"
-                android:gravity="center"
-                android:padding="@dimen/dp_10"
-                android:text="没有账号？前往注册"
-                android:textColor="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_repassword"
+                android:bind_onClick="@{viewModel.registerClick}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:bind_onClick="@{viewModel.touristClick}"
+                android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center"
                 android:padding="@dimen/dp_10"
-                android:text="我是游客，随便看看\n(不保存记录，如搜索、阅读历史等)"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/sp_12"
+                android:text="有账号了？前往登录"
+                android:textColor="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_register" />
+                app:layout_constraintTop_toBottomOf="@id/btn_register"
+                android:bind_onClick="@{viewModel.backClick}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </com.ygg.lib_common.widget.SrcScrollFrameLayout>
-
-
 </layout>

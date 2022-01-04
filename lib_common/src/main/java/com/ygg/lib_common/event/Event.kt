@@ -16,4 +16,4 @@ package com.ygg.lib_common.event
 
 
 /** LiveEventBus 事件 key - 取消收藏 */
-const val EVENT_COLLECTION_CANCELLED = "event_collection_cancelled"
+const val EVENT_REGISTER_SUCCESS = "event_register_success"

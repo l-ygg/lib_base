@@ -2,6 +2,10 @@ package com.ygg.module_login.viewmodel
 
 import androidx.databinding.ObservableField
 import com.ygg.lib_base.base.BaseViewModel
+import com.ygg.lib_base.model.UiStartActModel
+import com.ygg.lib_base.net.request
+import com.ygg.lib_base.util.toast.showSuccessToast
+import com.ygg.lib_common.constants.ROUTER_PATH_REGISTER
 import com.ygg.lib_common.repository.UserRepository
 
 /**
@@ -20,10 +24,27 @@ import com.ygg.lib_common.repository.UserRepository
 class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
 
     /** 用户名 */
-    val userName: ObservableField<String> = ObservableField("test")
+    val account: ObservableField<String> = ObservableField()
 
-    /** 指纹登录点击 */
-    val onLoginClick: () -> Unit = {
+    /** 密码 */
+    val pwd: ObservableField<String> = ObservableField()
+
+    /** 登录点击 */
+    val loginClick: () -> Unit = {
+
+        request({ repository.login(account.get().toString(), pwd.get().toString()) }, success = {
+            showSuccessToast("登录成功")
+        }, isShowDialog = true)
+
+    }
+
+    /** 注册点击 */
+    val registerClick: () -> Unit = {
+        uiStartActivity.value = UiStartActModel(ROUTER_PATH_REGISTER)
+    }
+
+    /** 随便看看点击 */
+    val touristClick: () -> Unit = {
 
     }
 }

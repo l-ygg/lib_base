@@ -19,4 +19,13 @@ interface ApiService {
         @Field("password") password: String
     ): BaseBean<UserInfoEntity>
 
+    /** 通过用户名[username]、密码[password]注册用户并返回用户信息 */
+    @FormUrlEncoded
+    @POST(UrlDefinition.REGISTER)
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") repassword: String = password
+    ): BaseBean<UserInfoEntity>
+
 }
