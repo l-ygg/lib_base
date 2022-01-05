@@ -62,8 +62,6 @@ class LoginActivity : BaseActivity<LoginViewModel, LoginActivityLoginBinding>() 
      */
     private fun checkInput() {
 
-        LogUtils.i("account:" + viewModel.account.get() + "   pwd:" + viewModel.pwd.get())
-
         var enable: Boolean =
             viewModel.account.get()?.isNotBlank() == true && viewModel.pwd.get()
                 ?.isNotBlank() == true

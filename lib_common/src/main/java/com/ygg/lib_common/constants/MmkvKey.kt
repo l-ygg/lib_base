@@ -15,5 +15,11 @@ package com.ygg.lib_common.constants
  */
 
 
-/** 数据缓存 - Key - 用户名 */
-const val DATA_CACHE_KEY_USER_NAME = "data_cache_key_user_name"
+/** 数据缓存 - Key - 用户ID */
+const val DATA_CACHE_KEY_USER_ID = "data_cache_key_user_id"
+
+/** 数据缓存 - Key - 用户姓名 */
+const val DATA_CACHE_KEY_USER_PUBLIC_NAME = "data_cache_key_user_public_name"
+
+/** 数据缓存 - Key - 用户json数据 */
+const val DATA_CACHE_KEY_USER_JSON = "data_cache_key_user_json"

@@ -2,6 +2,11 @@ apply from: "../module.build.gradle"
 
 android {
     defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 }
 

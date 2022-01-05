@@ -1,11 +1,17 @@
 package com.ygg.module_login.viewmodel
 
 import androidx.databinding.ObservableField
+import com.blankj.utilcode.util.GsonUtils
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ygg.lib_base.base.BaseViewModel
+import com.ygg.lib_base.cache.encode
+import com.ygg.lib_base.model.UiCloseModel
 import com.ygg.lib_base.model.UiStartActModel
 import com.ygg.lib_base.net.request
 import com.ygg.lib_base.util.toast.showSuccessToast
-import com.ygg.lib_common.constants.ROUTER_PATH_REGISTER
+import com.ygg.lib_common.constants.*
+import com.ygg.lib_common.entity.UserInfoEntity
 import com.ygg.lib_common.repository.UserRepository
 
 /**
@@ -31,9 +37,13 @@ class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
 
     /** 登录点击 */
     val loginClick: () -> Unit = {
-
         request({ repository.login(account.get().toString(), pwd.get().toString()) }, success = {
-            showSuccessToast("登录成功")
+            it.id?.let { it1 -> DATA_CACHE_KEY_USER_ID.encode(it1) }
+            it.publicName?.let { it1 -> DATA_CACHE_KEY_USER_PUBLIC_NAME.encode(it1) }
+            DATA_CACHE_KEY_USER_JSON.encode(GsonUtils.toJson(it,
+                object : TypeToken<UserInfoEntity>() {}.type))
+            uiStartActivity.value = UiStartActModel(ROUTER_PATH_MAIN)
+//            uiCloseActivity.value = UiCloseModel()
         }, isShowDialog = true)
 
     }
@@ -45,6 +55,7 @@ class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
 
     /** 随便看看点击 */
     val touristClick: () -> Unit = {
-
+        uiStartActivity.value = UiStartActModel(ROUTER_PATH_MAIN)
+        uiCloseActivity.value = UiCloseModel()
     }
 }

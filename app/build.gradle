@@ -87,5 +87,6 @@ dependencies {
     implementation project(path: ':lib_resources')
     if (!isBuildModule.toBoolean()) {
         implementation project(path: ':module_login')
+        implementation project(path: ':module_main')
     }
 }
