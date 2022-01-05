@@ -3,11 +3,14 @@ package com.ygg.module_main.ui
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import com.ygg.lib_base.adapter.ViewPagerFmAdapter
 import com.ygg.lib_base.base.BaseActivity
-import com.ygg.lib_common.constants.ROUTER_PATH_MAIN
+import com.ygg.lib_base.rotue.RouteCenter
+import com.ygg.lib_common.constants.*
 import com.ygg.module_main.R
 import com.ygg.module_main.viewmodel.MainViewModel
 import com.ygg.module_main.databinding.MainActivityMainBinding
+import me.yokeyword.fragmentation.SupportFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -32,6 +35,7 @@ class MainActivity : BaseActivity<MainViewModel, MainActivityMainBinding>() {
     override fun initData() {
 
         initBottomBar()
+        initViewPager()
 
     }
 
@@ -80,6 +84,23 @@ class MainActivity : BaseActivity<MainViewModel, MainActivityMainBinding>() {
             )
             setFirstSelectedPosition(0)
             initialise()
+        }
+    }
+
+    /**
+     *  初始化viewpager
+     */
+    private fun initViewPager() {
+        val homeFragment = RouteCenter.navigate(ROUTER_PATH_HOME) as SupportFragment
+        val squareFragment =
+            RouteCenter.navigate(ROUTER_PATH_SQUARE) as SupportFragment
+        val projectFragment =
+            RouteCenter.navigate(ROUTER_PATH_PROJECT) as SupportFragment
+        val userFragment = RouteCenter.navigate(ROUTER_PATH_MINE) as SupportFragment
+        val fragments = arrayListOf(homeFragment, squareFragment, projectFragment, userFragment)
+        binding.viewPager2.apply {
+            adapter = ViewPagerFmAdapter(supportFragmentManager, lifecycle, fragments)
+            offscreenPageLimit = fragments.size
         }
     }
 }

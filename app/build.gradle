@@ -88,5 +88,8 @@ dependencies {
     if (!isBuildModule.toBoolean()) {
         implementation project(path: ':module_login')
         implementation project(path: ':module_main')
+        implementation project(path: ':module_square')
+        implementation project(path: ':module_project')
+        implementation project(path: ':module_user')
     }
 }

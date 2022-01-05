@@ -19,7 +19,11 @@
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"></androidx.viewpager2.widget.ViewPager2>
+            android:layout_weight="1"
+            android:bind_vp2_currentItem="@{viewModel.currentItem}"
+            android:bind_vp2_offscreenPageLimit="@{10}"
+            android:bind_vp2_smoothScroll="@{false}"
+            android:bind_vp2_userInputEnabled="@{false}"></androidx.viewpager2.widget.ViewPager2>
 
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottomBar"
