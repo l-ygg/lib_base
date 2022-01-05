@@ -13,4 +13,5 @@ dependencies {
     api project(':lib_resources')
 
     api rootProject.ext.dependencies["lottie"]
+
 }

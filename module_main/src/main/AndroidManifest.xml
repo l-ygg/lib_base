@@ -3,7 +3,7 @@
     package="com.ygg.module_main">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ui.MainActivity"></activity>
     </application>
 
 </manifest>

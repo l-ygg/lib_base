@@ -52,7 +52,9 @@ ext {
             "live_event_bus_version"      : "1.7.2",
             "autosize_version"            : "1.1.2",
             "coil_version"                : "1.1.0",
+
             "lottie_version"              : "3.5.0",
+            "navigation_version"          : "2.2.0",
     ]
 
     //androidx配置
@@ -219,6 +221,12 @@ ext {
              * - Github: [https://github.com/airbnb/lottie-android]
              */
             "lottie"               : "com.airbnb.android:lottie:${versions["lottie_version"]}",
+
+            /*
+             *  导航栏
+             * - Github: [https://github.com/Ashok-Varma/BottomNavigation]
+             */
+            "navigation"           : "com.ashokvarma.android:bottom-navigation-bar:${versions["navigation_version"]}",
 
     ]
 }

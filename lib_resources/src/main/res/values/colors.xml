@@ -9,4 +9,6 @@
     <color name="color_black">#DFDFDF</color>
     <color name="color_white">#FFFFFF</color>
 
+    <color name="md_theme_red">#EF5350</color>
+
 </resources>

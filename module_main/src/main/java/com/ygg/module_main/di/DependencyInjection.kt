@@ -1,6 +1,6 @@
 package com.ygg.module_main.di
 
-import com.ygg.module_main.MainViewModel
+import com.ygg.module_main.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
