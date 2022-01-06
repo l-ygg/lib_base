@@ -134,10 +134,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>
     private fun initImmersionbar() {
         immersionBar {
             statusBarColor(R.color.app_immersion_bar)
-            statusBarDarkFont(false)
-            fitsSystemWindows(true)
-            initImmersionbar(this)
-            addTag(TAG)
+            statusBarDarkFont(true,0.2f)
         }
     }
 

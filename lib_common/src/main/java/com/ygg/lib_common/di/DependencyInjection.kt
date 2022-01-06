@@ -2,6 +2,7 @@ package com.ygg.lib_common.di
 
 import com.ygg.lib_base.net.RetrofitClient
 import com.ygg.lib_common.net.ApiService
+import com.ygg.lib_common.repository.ArticleRepository
 import com.ygg.lib_common.repository.UserRepository
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -32,4 +33,5 @@ val netModule: Module = module {
 /** 数据仓库 Module */
 val repositoryModule: Module = module {
     factory { UserRepository(get()) }
+    factory { ArticleRepository(get()) }
 }

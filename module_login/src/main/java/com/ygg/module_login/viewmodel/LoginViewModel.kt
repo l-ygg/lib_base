@@ -42,7 +42,7 @@ class LoginViewModel(private val repository: UserRepository) : BaseViewModel() {
             it.publicName?.let { it1 -> DATA_CACHE_KEY_USER_PUBLIC_NAME.encode(it1) }
             DATA_CACHE_KEY_USER_JSON.encode(GsonUtils.toJson(it,
                 object : TypeToken<UserInfoEntity>() {}.type))
-            uiStartActivity.value = UiStartActModel(ROUTER_PATH_MAIN)
+//            uiStartActivity.value = UiStartActModel(ROUTER_PATH_MAIN)
 //            uiCloseActivity.value = UiCloseModel()
         }, isShowDialog = true)
 

@@ -2,7 +2,7 @@
 <resources>
 
     <!-- 状态栏颜色 -->
-    <color name="app_immersion_bar">#03A9F4</color>
+    <color name="app_immersion_bar">#FAFAFA</color>
     <color name="color_toolbar">#FAFAFA</color>
     <color name="color_black">#000000</color>
     <color name="color_white">#FFFFFF</color>

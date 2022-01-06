@@ -1,8 +1,10 @@
 package com.ygg.lib_common.net
 
+import com.ygg.lib_common.entity.BannerEntity
 import com.ygg.lib_common.entity.UserInfoEntity
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 
@@ -28,4 +30,7 @@ interface ApiService {
         @Field("repassword") repassword: String = password
     ): BaseBean<UserInfoEntity>
 
+    /** 获取并返回首页 Banner 列表 */
+    @GET(UrlDefinition.GET_HOMEPAGE_BANNER_LIST)
+    suspend fun getHomepageBannerList(): BaseBean<List<BannerEntity>>
 }

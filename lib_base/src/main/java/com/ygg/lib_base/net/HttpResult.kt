@@ -1,6 +1,7 @@
 package com.ygg.lib_base.net
 
 import androidx.lifecycle.viewModelScope
+import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.model.UiLoadingDialogModel
 import com.ygg.lib_base.util.toast.showErrorToast
@@ -51,6 +52,7 @@ fun <T> BaseViewModel.request(
                     success(t)
                 }
             }.onFailure {
+                LogUtils.e(it.message)
                 //失败回调
                 error(ExceptionHandle.handleException(it))
                 showErrorToast(ExceptionHandle.handleException(it).errorMsg)
@@ -58,6 +60,7 @@ fun <T> BaseViewModel.request(
         }.onFailure {
             if (isShowDialog) uiLoadingDialog.value = UiLoadingDialogModel(false)
             //失败回调
+            LogUtils.e(it.message)
             error(ExceptionHandle.handleException(it))
             showErrorToast(ExceptionHandle.handleException(it).errorMsg)
         }

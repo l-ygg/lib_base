@@ -120,4 +120,11 @@ dependencies {
     api rootProject.ext.dependencies["coil_video"]
 
     api rootProject.ext.dependencies["navigation"]
+
+    api rootProject.ext.dependencies["refresh"]
+    api rootProject.ext.dependencies["refresh_header"]
+    api rootProject.ext.dependencies["refresh_footer_ball"]
+    api rootProject.ext.dependencies["refresh_footer_classic"]
+
+    api rootProject.ext.dependencies["rxbinding"]
 }

@@ -1,5 +1,6 @@
 package com.ygg.module_main.di
 
+import com.ygg.module_main.viewmodel.HomeViewModel
 import com.ygg.module_main.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -22,4 +23,5 @@ import org.koin.dsl.module
 /** ViewModel Module */
 val mainViewModelModule: Module = module {
     viewModel { MainViewModel() }
+    viewModel { HomeViewModel(get()) }
 }
