@@ -11,7 +11,8 @@
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="10pt">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -28,8 +29,8 @@
                     style="@style/SearchBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="39dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +49,43 @@
                     android:layout_height="200dp"
                     app:layout_scrollFlags="scroll" />
 
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_margin="@dimen/dp_10"
+                    android:bind_onTabSelected="@{viewModel.onItemSelected}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabBackground="@drawable/selector_tab"
+                    app:tabGravity="start"
+                    app:tabIndicatorGravity="bottom"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabRippleColor="@color/trans"
+                    app:tabSelectedTextColor="#ffffff">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热门博文" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热门项目" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+
             </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ry_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -17,3 +17,10 @@ package com.ygg.lib_common.constants
 
 /** 欢迎界面延时时间 */
 const val SPLASH_DELAY_MS = 1_000L
+
+/** 字符串开关标记 */
+const val STR_TRUE = "1"
+const val STR_FALSE = "0"
+
+/** 网络请求页码开始 */
+const val NET_PAGE_START = 0

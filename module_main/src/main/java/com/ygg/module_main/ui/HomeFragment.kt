@@ -1,5 +1,7 @@
 package com.ygg.module_main.ui
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
@@ -9,7 +11,9 @@ import com.gyf.immersionbar.ImmersionBar
 import com.ygg.lib_base.base.BaseFragment
 import com.ygg.lib_base.viewmodel.BlankViewModel
 import com.ygg.lib_common.constants.ROUTER_PATH_HOME
+import com.ygg.lib_common.entity.ArticleEntity
 import com.ygg.module_main.R
+import com.ygg.module_main.adapter.HomeArticleAdapter
 import com.ygg.module_main.adapter.MyBannerAdapter
 import com.ygg.module_main.databinding.MainFragmentHomeBinding
 import com.ygg.module_main.viewmodel.HomeViewModel
@@ -35,8 +39,9 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
 
     private lateinit var bannerSkeleton: SkeletonScreen
     private lateinit var bannerAdapter: MyBannerAdapter
+    lateinit var mArticleAdapter: HomeArticleAdapter
 
-    override val viewModel: HomeViewModel by viewModel()
+    public override val viewModel: HomeViewModel by viewModel()
 
     override fun initContentView(): Int = R.layout.main_fragment_home
 
@@ -47,8 +52,10 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
 
     override fun initData() {
         initBanner()
+        initRv()
 
         viewModel.getBannerList()
+        viewModel.getHomeArticle(viewModel.pageNumber.value!!)
     }
 
     override fun initViewObservable() {
@@ -57,6 +64,10 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
             bannerSkeleton.hide()
             bannerAdapter = MyBannerAdapter(it, this)
             binding.banner.adapter = bannerAdapter
+        })
+
+        viewModel.articleData.observe(this, {
+            mArticleAdapter.setDiffNewData(it as MutableList<ArticleEntity>?)
         })
     }
 
@@ -68,6 +79,15 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
             addBannerLifecycleObserver(this@HomeFragment)
             setBannerGalleryEffect(18, 10)
             addPageTransformer(AlphaPageTransformer(0.6f))
+        }
+    }
+
+    private fun initRv() {
+        mArticleAdapter = HomeArticleAdapter(viewModel)
+        mArticleAdapter.setDiffCallback(mArticleAdapter.diffConfig)
+        binding.ryArticle.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = mArticleAdapter
         }
     }
 }

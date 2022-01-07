@@ -264,5 +264,11 @@ ext {
             "skeleton"              : "com.ethanhua:skeleton:1.1.2",
             "shimmer_recyclerView"  : "com.github.sharish:ShimmerRecyclerView:v1.3",
 
+            /*
+             *  baseAdapter
+             * - Github: [https://github.com/CymChad/BaseRecyclerViewAdapterHelper]
+             */
+            "adapter_helper"  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4",
+
     ]
 }

@@ -18,6 +18,7 @@ dependencies {
     api rootProject.ext.dependencies["banner"]
     api rootProject.ext.dependencies["skeleton"]
     api rootProject.ext.dependencies["shimmer_recyclerView"]
+    api rootProject.ext.dependencies["adapter_helper"]
 
 
 
