@@ -122,7 +122,8 @@ dependencies {
     api rootProject.ext.dependencies["navigation"]
 
     api rootProject.ext.dependencies["refresh"]
-    api rootProject.ext.dependencies["refresh_header"]
+    api rootProject.ext.dependencies["refresh_header_classics"]
+    api rootProject.ext.dependencies["refresh_header_material"]
     api rootProject.ext.dependencies["refresh_footer_ball"]
     api rootProject.ext.dependencies["refresh_footer_classic"]
 

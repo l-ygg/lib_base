@@ -10,28 +10,36 @@
             type="com.ygg.module_main.viewmodel.MainViewModel" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager2"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_target"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:bind_vp2_currentItem="@{viewModel.currentItem}"
-            android:bind_vp2_offscreenPageLimit="@{10}"
-            android:bind_vp2_smoothScroll="@{false}"
-            android:bind_vp2_userInputEnabled="@{false}"></androidx.viewpager2.widget.ViewPager2>
+            android:layout_weight="1">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:bind_vp2_currentItem="@{viewModel.currentItem}"
+                android:bind_vp2_offscreenPageLimit="@{10}"
+                android:bind_vp2_smoothScroll="@{false}"
+                android:bind_vp2_userInputEnabled="@{false}"></androidx.viewpager2.widget.ViewPager2>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottomBar"
-            android:bind_bnv_onCustomItemSelected="@{viewModel.onItemSelected}"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
+            android:bind_bnv_onCustomItemSelected="@{viewModel.onItemSelected}"
             app:bnbAutoHideEnabled="false"
-            app:bnbBackgroundColor="@color/color_white"></com.ashokvarma.bottomnavigation.BottomNavigationBar>
+            app:bnbBackgroundColor="@color/color_white"
+            android:layout_alignParentBottom="true"></com.ashokvarma.bottomnavigation.BottomNavigationBar>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 </layout>

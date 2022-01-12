@@ -1,6 +1,7 @@
 package com.ygg.module_project
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.gyf.immersionbar.ImmersionBar
 import com.ygg.lib_base.base.BaseFragment
 import com.ygg.lib_base.viewmodel.BlankViewModel
 import com.ygg.lib_common.constants.ROUTER_PATH_PROJECT
@@ -30,5 +31,10 @@ class ProjectFragment :BaseFragment<BlankViewModel,ProjectFragmentProjectBinding
     }
 
     override fun initViewObservable() {
+    }
+
+    override fun onSupportVisible() {
+        ImmersionBar.with(this).fitsSystemWindows(true)
+            .statusBarDarkFont(true).init()
     }
 }

@@ -69,4 +69,10 @@ class ArticleRepository(private val apiService: ApiService) {
         apiService.unCollectArticleList(id)
     }
 
+    /**
+     *  获取首页热门项目列表
+     */
+    suspend fun getHomepageArticleProjectList(pageNum: Int) = netRequest {
+        apiService.getHomepageArticleProjectList(pageNum)
+    }
 }

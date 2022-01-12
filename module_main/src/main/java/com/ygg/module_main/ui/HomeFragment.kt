@@ -1,5 +1,7 @@
 package com.ygg.module_main.ui
 
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -10,14 +12,20 @@ import com.ethanhua.skeleton.SkeletonScreen
 import com.gyf.immersionbar.ImmersionBar
 import com.ygg.lib_base.base.BaseFragment
 import com.ygg.lib_base.viewmodel.BlankViewModel
+import com.ygg.lib_common.constants.NET_PAGE_START
 import com.ygg.lib_common.constants.ROUTER_PATH_HOME
+import com.ygg.lib_common.constants.SPLASH_DELAY_MS
 import com.ygg.lib_common.entity.ArticleEntity
+import com.ygg.lib_common.entity.ProjectEntity
 import com.ygg.module_main.R
 import com.ygg.module_main.adapter.HomeArticleAdapter
+import com.ygg.module_main.adapter.HomeProjectAdapter
 import com.ygg.module_main.adapter.MyBannerAdapter
 import com.ygg.module_main.databinding.MainFragmentHomeBinding
 import com.ygg.module_main.viewmodel.HomeViewModel
 import com.youth.banner.transformer.AlphaPageTransformer
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -38,16 +46,25 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
 
     private lateinit var bannerSkeleton: SkeletonScreen
+    private lateinit var articleSkeleton: SkeletonScreen
+    private lateinit var projectSkeleton: SkeletonScreen
     private lateinit var bannerAdapter: MyBannerAdapter
     lateinit var mArticleAdapter: HomeArticleAdapter
+    lateinit var projectAdapter: HomeProjectAdapter
 
     public override val viewModel: HomeViewModel by viewModel()
 
     override fun initContentView(): Int = R.layout.main_fragment_home
 
-    override fun initImmersionbar(immersionBar: ImmersionBar) {
-        immersionBar.fitsSystemWindows(true)
-        super.initImmersionbar(immersionBar)
+
+    override fun onSupportVisible() {
+        lifecycleScope.launch {
+            // 延时 1000ms
+            delay(10)
+
+            ImmersionBar.with(requireActivity()).fitsSystemWindows(true)
+                .statusBarDarkFont(true).init()
+        }
     }
 
     override fun initData() {
@@ -55,20 +72,37 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
         initRv()
 
         viewModel.getBannerList()
-        viewModel.getHomeArticle(viewModel.pageNumber.value!!)
+        viewModel.getHomeArticle()
+        viewModel.getHomeArticleProject()
     }
 
     override fun initViewObservable() {
 
-        viewModel.bannerData.observe(this, {
-            bannerSkeleton.hide()
-            bannerAdapter = MyBannerAdapter(it, this)
-            binding.banner.adapter = bannerAdapter
-        })
+        viewModel.apply {
+            bannerData.observe(this@HomeFragment, {
+                bannerSkeleton.hide()
+                bannerAdapter = MyBannerAdapter(it, this@HomeFragment)
+                binding.banner.adapter = bannerAdapter
+            })
 
-        viewModel.articleData.observe(this, {
-            mArticleAdapter.setDiffNewData(it as MutableList<ArticleEntity>?)
-        })
+            articleData.observe(this@HomeFragment, {
+                articleSkeleton.hide()
+                if (viewModel.pageNumber.value == NET_PAGE_START) {
+                    mArticleAdapter.setDiffNewData(it as MutableList<ArticleEntity>?)
+                } else {
+                    mArticleAdapter.addData(it)
+                }
+            })
+
+            projectData.observe(this@HomeFragment, {
+                projectSkeleton.hide()
+                if (viewModel.projectPageNumber.value == NET_PAGE_START) {
+                    projectAdapter.setDiffNewData(it as MutableList<ProjectEntity>?)
+                } else {
+                    projectAdapter.addData(it)
+                }
+            })
+        }
     }
 
     private fun initBanner() {
@@ -89,5 +123,21 @@ class HomeFragment : BaseFragment<HomeViewModel, MainFragmentHomeBinding>() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = mArticleAdapter
         }
+        articleSkeleton = Skeleton.bind(binding.ryArticle)
+            .adapter(mArticleAdapter)
+            .load(R.layout.main_article_item_skeleton)
+            .show()
+
+        projectAdapter = HomeProjectAdapter(viewModel)
+        projectAdapter.setDiffCallback(projectAdapter.diffConfig)
+        binding.ryProject.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = projectAdapter
+        }
+
+        projectSkeleton = Skeleton.bind(binding.ryProject)
+            .adapter(projectAdapter)
+            .load(R.layout.main_item_project_skeleton)
+            .show()
     }
 }

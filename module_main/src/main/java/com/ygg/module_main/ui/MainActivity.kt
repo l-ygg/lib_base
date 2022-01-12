@@ -3,6 +3,7 @@ package com.ygg.module_main.ui
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import com.gyf.immersionbar.ImmersionBar
 import com.ygg.lib_base.adapter.ViewPagerFmAdapter
 import com.ygg.lib_base.base.BaseActivity
 import com.ygg.lib_base.rotue.RouteCenter
@@ -37,7 +38,10 @@ class MainActivity : BaseActivity<MainViewModel, MainActivityMainBinding>() {
         initBottomBar()
         initViewPager()
 
+        ImmersionBar.with(this).fitsSystemWindows(true).init()
+
     }
+
 
     override fun initViewObservable() {
     }

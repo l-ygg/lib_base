@@ -32,6 +32,8 @@ object UrlDefinition {
     const val GET_HOMEPAGE_TOP_ARTICLE_LIST = "/article/top/json"
     /** 获取首页文章列表 */
     const val GET_HOMEPAGE_ARTICLE_LIST = "/article/list/{pageNum}/json"
+    /** 获取首页热门项目列表 */
+    const val GET_HOMEPAGE_ARTICLE_LIST_PROJECT = "/article/listproject/{page}/json"
 
     /** 获取收藏列表 */
     const val GET_COLLECTION_LIST = "/lg/collect/list/{pageNum}/json"

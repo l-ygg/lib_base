@@ -3,6 +3,8 @@ package com.ygg.lib_base.base
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.ygg.lib_base.R
+import com.ygg.lib_base.databinding.adapter.SmartRefreshState
+import com.ygg.lib_base.ext.orElse
 import com.ygg.lib_base.model.UiCloseModel
 import com.ygg.lib_base.model.UiLoadingDialogModel
 import com.ygg.lib_base.model.UiStartActModel
@@ -58,6 +60,32 @@ abstract class BaseViewModel : BaseLibViewModel() {
      */
     open val toolbarRightText: ObservableField<String> = ObservableField()
 
+    val pageNumber: MutableLiveData<Int> = MutableLiveData(0)
+
+    val refreshing: MutableLiveData<SmartRefreshState> = MutableLiveData()
+
+    val loadMore: MutableLiveData<SmartRefreshState> = MutableLiveData()
+
+    val onRefresh: () -> Unit = {
+        pageNumber.value = 0
+        refresh()
+    }
+
+    val onLoadMore: () -> Unit = {
+        pageNumber.value = pageNumber.value.orElse(0) + 1
+        loadMore()
+    }
+
+    /**
+     *  子类重写该方法实现操作
+     */
+    open fun refresh() {}
+
+    /**
+     *  子类重写该方法实现操作
+     */
+    open fun loadMore() {}
+
     /**
      *  返回键点击
      */
@@ -99,6 +127,7 @@ abstract class BaseViewModel : BaseLibViewModel() {
      *  子类重写该方法实现操作
      */
     open fun setToolbarRightTextClick() {}
+
 
 
 }

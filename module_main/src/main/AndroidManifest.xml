@@ -3,7 +3,8 @@
     package="com.ygg.module_main">
 
     <application>
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>

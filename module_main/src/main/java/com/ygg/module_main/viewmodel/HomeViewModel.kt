@@ -3,11 +3,15 @@ package com.ygg.module_main.viewmodel
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.ygg.lib_base.base.BaseViewModel
+import com.ygg.lib_base.databinding.adapter.SmartRefreshState
+import com.ygg.lib_base.ext.orElse
 import com.ygg.lib_base.net.request
 import com.ygg.lib_common.constants.NET_PAGE_START
 import com.ygg.lib_common.entity.ArticleEntity
 import com.ygg.lib_common.entity.BannerEntity
+import com.ygg.lib_common.entity.ProjectEntity
 import com.ygg.lib_common.interfaces.collect
+import com.ygg.lib_common.interfaces.loadComplete
 import com.ygg.lib_common.repository.ArticleRepository
 
 /**
@@ -26,13 +30,17 @@ import com.ygg.lib_common.repository.ArticleRepository
 class HomeViewModel(private val repository: ArticleRepository) :
     BaseViewModel() {
 
-    /** 页码 */
-    val pageNumber: MutableLiveData<Int> = MutableLiveData(NET_PAGE_START)
+    /**
+     *  热门项目列表page
+     */
+    val projectPageNumber: MutableLiveData<Int> = MutableLiveData(0)
 
     /**
      *  博文数据源
      */
     val articleData: MutableLiveData<List<ArticleEntity>> = MutableLiveData()
+
+    val projectData: MutableLiveData<List<ProjectEntity>> = MutableLiveData()
 
     /** Banner 列表数据 */
     val bannerData: MutableLiveData<List<BannerEntity>> = MutableLiveData()
@@ -59,10 +67,26 @@ class HomeViewModel(private val repository: ArticleRepository) :
     /**
      *  获取首页博文列表
      */
-    fun getHomeArticle(page: Int) {
+    fun getHomeArticle() {
         request({ repository.getHomepageArticleList(pageNumber.value!!) }, success = {
             articleData.value = it.datas
+            loadComplete(success = true, noMore = it.over.toBoolean())
+        }, error = {
+            loadComplete(false)
         })
+    }
+
+    /**
+     *  获取首页热门项目列表
+     */
+    fun getHomeArticleProject() {
+        request({ repository.getHomepageArticleProjectList(projectPageNumber.value!!) },
+            success = {
+                projectData.value = it.datas
+                loadComplete(success = true, noMore = it.over)
+            }, error = {
+                loadComplete(false)
+            })
     }
 
     /**
@@ -70,6 +94,26 @@ class HomeViewModel(private val repository: ArticleRepository) :
      */
     fun articleCollect(bean: ArticleEntity) {
         collect(repository, bean)
+    }
+
+    override fun refresh() {
+        super.refresh()
+        if (tabItem.get() == 0) {
+            getHomeArticle()
+        } else {
+            projectPageNumber.value = NET_PAGE_START
+            getHomeArticleProject()
+        }
+    }
+
+    override fun loadMore() {
+        super.loadMore()
+        if (tabItem.get() == 0) {
+            getHomeArticle()
+        } else {
+            projectPageNumber.value = projectPageNumber.value.orElse(NET_PAGE_START + 1)
+            getHomeArticleProject()
+        }
     }
 
 }

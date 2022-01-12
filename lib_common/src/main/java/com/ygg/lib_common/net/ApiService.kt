@@ -1,9 +1,6 @@
 package com.ygg.lib_common.net
 
-import com.ygg.lib_common.entity.ArticleEntity
-import com.ygg.lib_common.entity.ArticleListEntity
-import com.ygg.lib_common.entity.BannerEntity
-import com.ygg.lib_common.entity.UserInfoEntity
+import com.ygg.lib_common.entity.*
 import retrofit2.http.*
 
 
@@ -40,6 +37,10 @@ interface ApiService {
     /** 根据页码[pageNum]获取并返回首页文章列表 */
     @GET(UrlDefinition.GET_HOMEPAGE_ARTICLE_LIST)
     suspend fun getHomepageArticleList(@Path("pageNum") pageNum: Int): BaseBean<ArticleListEntity>
+
+    /** 根据页码[pageNum]获取并返回首页文章列表 */
+    @GET(UrlDefinition.GET_HOMEPAGE_ARTICLE_LIST_PROJECT)
+    suspend fun getHomepageArticleProjectList(@Path("page") pageNum: Int): BaseBean<ProjectListEntity>
 
     /** 通过文章[id]收藏站内文章 */
     @POST(UrlDefinition.COLLECT_ARTICLE_INSIDE)

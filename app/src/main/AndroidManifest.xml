@@ -3,7 +3,8 @@
     package="com.ygg.project_base">
 
     <application
-        android:name=".MyApplication">
+        android:name=".MyApplication"
+        android:theme="@style/AppTheme">
     </application>
 
 </manifest>

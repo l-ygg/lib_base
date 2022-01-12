@@ -12,7 +12,11 @@
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10pt">
+        android:bind_smart_loadMoreState="@={viewModel.loadMore}"
+        android:bind_smart_onLoadMore="@{viewModel.onLoadMore}"
+        android:bind_smart_onRefresh="@{viewModel.onRefresh}"
+        android:bind_smart_refreshState="@={viewModel.refreshing}">
+
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -83,12 +87,21 @@
                 android:id="@+id/ry_article"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:bind_visibility="@{viewModel.tabItem==0}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ry_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:bind_visibility="@{viewModel.tabItem==1}"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </layout>

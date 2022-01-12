@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.core.widget.addTextChangedListener
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.ygg.lib_base.base.BaseActivity
 import com.ygg.lib_common.constants.ROUTER_PATH_LOGIN

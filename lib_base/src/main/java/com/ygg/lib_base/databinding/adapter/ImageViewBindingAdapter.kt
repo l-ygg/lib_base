@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.ygg.lib_base.databinding.IMG_DRAWABLE_MARK
 import com.ygg.lib_base.databinding.IMG_MIPMAP_MARK
 import com.ygg.lib_base.databinding.getIdentifier
+import com.ygg.lib_base.ext.loadImage
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -44,5 +45,16 @@ fun setImageResource(iv: ImageView, res: String?) {
             val realRes = res.split(":")[1]
             iv.setImageResource(realRes.getIdentifier(iv.context, "mipmap"))
         }
+    }
+}
+
+/**
+ * 根据资源字符串 [res] 给 [iv] 加载图片
+ * > [res]: [IMG_DRAWABLE_MARK]:resId or [IMG_MIPMAP_MARK]:resId
+ */
+@BindingAdapter("android:bind_url")
+fun setImageUrl(iv: ImageView, url: String?) {
+    if (null != url && url.isNotBlank()) {
+        iv.loadImage(url)
     }
 }

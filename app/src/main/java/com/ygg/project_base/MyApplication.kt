@@ -2,6 +2,11 @@ package com.ygg.project_base
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.core.content.ContextCompat
+import com.scwang.smart.refresh.footer.BallPulseFooter
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.MaterialHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.ygg.lib_base.base.BaseApplication
 import com.ygg.lib_base.log.InternalLog
 import com.ygg.lib_base.net.RetrofitClient
@@ -57,4 +62,32 @@ class MyApplication : BaseApplication() {
 
     }
 
+    companion object {
+        init {
+            ClassicsFooter.REFRESH_FOOTER_FINISH = ""
+            SmartRefreshLayout.setDefaultRefreshInitializer { _, layout ->
+                layout.apply {
+                    setEnableOverScrollDrag(true)
+                    setEnableScrollContentWhenLoaded(false)
+                    setEnableAutoLoadMore(true)
+                    setEnableOverScrollBounce(true)
+                    setFooterHeight(60f)
+                }
+            }
+            SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+                layout.apply {
+                    setPrimaryColorsId(R.color.md_theme_red, R.color.white)
+                }
+                MaterialHeader(context).setColorSchemeColors(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.md_theme_red
+                    )
+                )
+            }
+            SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
+                ClassicsFooter(context).setFinishDuration(0)
+            }
+        }
+    }
 }
