@@ -1,10 +1,14 @@
 package com.ygg.lib_common.interfaces
 
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
+import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.base.BaseViewModel
 import com.ygg.lib_base.net.AppException
 import com.ygg.lib_base.net.BaseResponse
 import com.ygg.lib_base.net.request
 import com.ygg.lib_common.entity.ArticleEntity
+import com.ygg.lib_common.entity.SquareEntity
 import com.ygg.lib_common.repository.ArticleRepository
 import kotlinx.coroutines.Job
 
@@ -37,6 +41,25 @@ fun BaseViewModel.collect(
                     bean.collected.set(false)
                 })
             }
+        }
+    }
+}
+
+fun BaseViewModel.collect(
+    repository: ArticleRepository,
+    collected: ObservableBoolean,
+    id: String
+) {
+    when (collected.get()) {
+        true -> {
+            request({ repository.collectArticleInside(id) }, success = {
+                collected.set(true)
+            })
+        }
+        else -> {
+            request({ repository.unCollectArticleList(id) }, success = {
+                collected.set(false)
+            })
         }
     }
 }

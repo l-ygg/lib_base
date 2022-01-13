@@ -1,26 +1,22 @@
 package com.ygg.project_base
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.core.content.ContextCompat
-import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.ygg.lib_base.base.BaseApplication
-import com.ygg.lib_base.log.InternalLog
 import com.ygg.lib_base.net.RetrofitClient
 import com.ygg.lib_common.di.netModule
 import com.ygg.lib_common.di.repositoryModule
 import com.ygg.lib_common.net.UrlDefinition
 import com.ygg.module_login.di.loginViewModelModule
 import com.ygg.module_main.di.mainViewModelModule
+import com.ygg.module_square.di.squareViewModelModule
 import com.ygg.project_base.di.baseViewModelModule
 import me.jessyan.autosize.AutoSizeConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 
 /**
  * Copyright (C) 2021 重庆呼我出行网络科技有限公司
@@ -50,7 +46,8 @@ class MyApplication : BaseApplication() {
                     baseViewModelModule,
                     netModule,
                     repositoryModule,
-                    mainViewModelModule
+                    mainViewModelModule,
+                    squareViewModelModule
                 )
             )
         }

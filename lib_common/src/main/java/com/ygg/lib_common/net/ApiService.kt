@@ -42,6 +42,10 @@ interface ApiService {
     @GET(UrlDefinition.GET_HOMEPAGE_ARTICLE_LIST_PROJECT)
     suspend fun getHomepageArticleProjectList(@Path("page") pageNum: Int): BaseBean<ProjectListEntity>
 
+    /** 根据页码[pageNum]获取并返回首页文章列表 */
+    @GET(UrlDefinition.GET_SQUARE_ARTICLE_LIST)
+    suspend fun getSquareList(@Path("page") pageNum: Int): BaseBean<SquareListEntity>
+
     /** 通过文章[id]收藏站内文章 */
     @POST(UrlDefinition.COLLECT_ARTICLE_INSIDE)
     suspend fun collectArticleInside(@Path("id") id: String): BaseBean<Any>

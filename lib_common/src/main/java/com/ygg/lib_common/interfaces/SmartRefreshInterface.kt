@@ -1,10 +1,7 @@
 package com.ygg.lib_common.interfaces
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ygg.lib_base.databinding.adapter.SmartRefreshState
-import com.ygg.lib_common.entity.ArticleEntity
-import com.ygg.lib_common.net.BaseBean
 
 /**
  * Copyright (C) 2022 重庆呼我出行网络科技有限公司

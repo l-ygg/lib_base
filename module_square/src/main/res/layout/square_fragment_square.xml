@@ -6,21 +6,120 @@
 
         <variable
             name="viewModel"
-            type="com.ygg.lib_base.viewmodel.BlankViewModel" />
+            type="com.ygg.module_square.viewmodel.SquareViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:bind_smart_loadMoreState="@={viewModel.loadMore}"
+        android:bind_smart_onLoadMore="@{viewModel.onLoadMore}"
+        android:bind_smart_onRefresh="@{viewModel.onRefresh}"
+        android:bind_smart_refreshState="@={viewModel.refreshing}">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SquareFragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatTextView>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/trans"
+                app:elevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <com.lihang.ShadowLayout
+                        android:id="@+id/btn_setup"
+                        android:layout_width="140dp"
+                        android:layout_height="68dp"
+                        android:layout_marginTop="@dimen/dp_10"
+                        app:hl_cornerRadius="@dimen/dp_6"
+                        app:hl_endColor="#ffffff"
+                        app:hl_layoutBackground="@color/md_theme_red"
+                        app:hl_shadowColor="@color/md_theme_red"
+                        app:hl_shadowLimit="@dimen/dp_10"
+                        app:hl_startColor="@color/md_theme_red"
+                        app:layout_constraintEnd_toStartOf="@id/btn_navigate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingEnd="@dimen/dp_10"
+                            android:text="体系"
+                            android:textColor="#ffffff"
+                            app:drawableEndCompat="@drawable/ic_setup" />
+                    </com.lihang.ShadowLayout>
+
+                    <com.lihang.ShadowLayout
+                        android:id="@+id/btn_navigate"
+                        android:layout_width="140dp"
+                        android:layout_height="68dp"
+                        app:hl_cornerRadius="@dimen/dp_6"
+                        app:hl_endColor="#ffffff"
+                        app:hl_layoutBackground="@color/md_theme_red"
+                        app:hl_shadowColor="@color/md_theme_red"
+                        app:hl_shadowLimit="@dimen/dp_10"
+                        app:hl_startColor="@color/md_theme_red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btn_setup"
+                        app:layout_constraintTop_toTopOf="@+id/btn_setup">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingEnd="@dimen/dp_14"
+                            android:text="导航"
+                            android:textColor="#ffffff"
+                            app:drawableEndCompat="@drawable/ic_navigate" />
+                    </com.lihang.ShadowLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dp_10"
+                        android:text="近期分享"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_setup" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:gravity="center"
+                        android:text="我要分享"
+                        android:textColor="@color/blacks"
+                        android:textSize="@dimen/sp_12" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ry_common"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </layout>

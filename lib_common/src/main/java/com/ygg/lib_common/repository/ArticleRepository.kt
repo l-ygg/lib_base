@@ -1,10 +1,13 @@
 package com.ygg.lib_common.repository
 
+import androidx.databinding.ObservableBoolean
+import com.blankj.utilcode.util.LogUtils
 import com.ygg.lib_base.ext.orFalse
 import com.ygg.lib_base.net.netRequest
 import com.ygg.lib_common.constants.NET_PAGE_START
 import com.ygg.lib_common.constants.STR_TRUE
 import com.ygg.lib_common.entity.ArticleEntity
+import com.ygg.lib_common.entity.SquareEntity
 import com.ygg.lib_common.net.ApiService
 import kotlinx.coroutines.async
 
@@ -74,5 +77,30 @@ class ArticleRepository(private val apiService: ApiService) {
      */
     suspend fun getHomepageArticleProjectList(pageNum: Int) = netRequest {
         apiService.getHomepageArticleProjectList(pageNum)
+    }
+
+    /**
+     *  获取广场列表
+     */
+    suspend fun getSquareList(pageNum: Int) = netRequest {
+        val ls = arrayListOf<SquareEntity>()
+        val resultAsync = async {
+            apiService.getSquareList(pageNum)
+        }
+        val result = resultAsync.await()
+        // 添加文章列表到 ls
+        ls.addAll(result.data?.datas.orEmpty())
+        // 处理收藏状态
+        ls.forEach {
+            if (it.collected == null) {
+                it.collected=ObservableBoolean()
+                LogUtils.i("collect: null")
+            } else {
+                LogUtils.i("connect:not null")
+            }
+            it.collected.set(it.collect?.toBoolean().orFalse())
+        }
+        // 处理返回列表
+        result.copy(data = result.data?.copy(datas = ls))
     }
 }

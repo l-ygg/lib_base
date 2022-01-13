@@ -35,6 +35,11 @@ object UrlDefinition {
     /** 获取首页热门项目列表 */
     const val GET_HOMEPAGE_ARTICLE_LIST_PROJECT = "/article/listproject/{page}/json"
 
+    /**
+     *  获取广场列表
+     */
+    const val GET_SQUARE_ARTICLE_LIST = "/user_article/list/{page}/json"
+
     /** 获取收藏列表 */
     const val GET_COLLECTION_LIST = "/lg/collect/list/{pageNum}/json"
     /** 收藏站内文章 */
