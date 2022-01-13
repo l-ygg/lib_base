@@ -93,14 +93,23 @@ class ArticleRepository(private val apiService: ApiService) {
         // 处理收藏状态
         ls.forEach {
             if (it.collected == null) {
-                it.collected=ObservableBoolean()
-                LogUtils.i("collect: null")
-            } else {
-                LogUtils.i("connect:not null")
+                it.collected = ObservableBoolean()
             }
             it.collected.set(it.collect?.toBoolean().orFalse())
         }
         // 处理返回列表
         result.copy(data = result.data?.copy(datas = ls))
+    }
+
+    /** 获取新项目分类列表 */
+    suspend fun getProjectCategory() = netRequest {
+        apiService.getProjectCategory()
+    }
+
+    /**
+     *  根据ID获取项目列表
+     */
+    suspend fun getProjectList(categoryId: String, pageNum: Int) = netRequest {
+        apiService.getProjectList(pageNum, categoryId)
     }
 }

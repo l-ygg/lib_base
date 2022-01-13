@@ -31,7 +31,7 @@ abstract class BaseBindingLibFragment<VM : BaseLibViewModel, DB : ViewDataBindin
     : BaseMvvmLibFragment<VM>() {
 
     /** DataBinding 对象 */
-    protected lateinit var binding: DB
+    lateinit var binding: DB
 
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 //

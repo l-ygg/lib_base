@@ -40,17 +40,6 @@ class SquareFragment : BaseFragment<SquareViewModel, SquareFragmentSquareBinding
 
     override fun initContentView(): Int = R.layout.square_fragment_square
 
-    override fun onSupportVisible() {
-        lifecycleScope.launch {
-            // 延时 1000ms
-            delay(10)
-
-            ImmersionBar.with(requireActivity()).fitsSystemWindows(true)
-                .statusBarDarkFont(true).init()
-        }
-    }
-
-
     override fun initData() {
 
         initRv()

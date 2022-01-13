@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adapter"
+            type="com.ygg.module_project.adapter.ProjectGridAdapter" />
+
+        <variable
+            name="data"
+            type="com.ygg.lib_common.entity.ArticleEntity" />
+    </data>
+
+    <com.lihang.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hl_cornerRadius="@dimen/dp_10"
+        app:hl_layoutBackground="@color/white"
+        app:hl_shadowColor="@color/shadow_color"
+        app:hl_shadowLimit="@dimen/dp_6">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_project_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="@dimen/dp_4"
+                android:text="@{data.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_12" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.lihang.ShadowLayout>
+
+</layout>

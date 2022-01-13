@@ -11,6 +11,7 @@ import com.ygg.lib_common.di.repositoryModule
 import com.ygg.lib_common.net.UrlDefinition
 import com.ygg.module_login.di.loginViewModelModule
 import com.ygg.module_main.di.mainViewModelModule
+import com.ygg.module_project.di.projectViewModelModule
 import com.ygg.module_square.di.squareViewModelModule
 import com.ygg.project_base.di.baseViewModelModule
 import me.jessyan.autosize.AutoSizeConfig
@@ -47,7 +48,8 @@ class MyApplication : BaseApplication() {
                     netModule,
                     repositoryModule,
                     mainViewModelModule,
-                    squareViewModelModule
+                    squareViewModelModule,
+                    projectViewModelModule
                 )
             )
         }

@@ -53,4 +53,15 @@ interface ApiService {
     /** 文章列表中根据文章[id]取消收藏 */
     @POST(UrlDefinition.UN_COLLECT_ARTICLE_LIST)
     suspend fun unCollectArticleList(@Path("id") id: String): BaseBean<Any>
+
+    /** 获取并返回项目分类列表 */
+    @GET(UrlDefinition.GET_PROJECT_CATEGORY)
+    suspend fun getProjectCategory(): BaseBean<ArrayList<CategoryEntity>>
+
+    /** 根据分类id[categoryId]、页码[pageNum]获取并返回项目列表 */
+    @GET(UrlDefinition.GET_PROJECT_LIST)
+    suspend fun getProjectList(
+        @Path("pageNum") pageNum: Int,
+        @Query("cid") categoryId: String
+    ): BaseBean<ArticleListEntity>
 }
